@@ -1,724 +1,773 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BJS Law — Complete Study Reference</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
-:root{--ink:#1a1a2e;--ink2:#2d2d44;--ink3:#5a5a7a;--ink4:#9898b0;--paper:#fafaf7;--paper2:#f3f3ee;--paper3:#e8e8e0;--accent:#b8460f;--accent2:#d4622a;--accent-bg:#fdf1ec;--gold:#c8932a;--gold-bg:#fdf8ee;--green:#2a7a4a;--green-bg:#eef7f2;--blue:#1a5fa8;--blue-bg:#eef3fb;--purple:#6a2a8a;--purple-bg:#f5eefb;--serif:'Crimson Pro',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
-.topbar{background:var(--ink);color:#fff;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
-.topbar-brand{font-family:var(--serif);font-size:20px;font-weight:600;}.topbar-brand span{color:#e8a87c;}
-.menu-btn{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
-.layout{display:flex;flex:1;}
-.sidebar{width:285px;background:var(--ink2);color:#fff;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;flex-shrink:0;transition:transform 0.3s;}
-.sidebar::-webkit-scrollbar{width:4px;}.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px;}
-.ss{padding:14px 0 4px;}.ssl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 18px 6px;}
-.ni{display:flex;align-items:center;gap:9px;padding:8px 18px;font-size:12.5px;color:rgba(255,255,255,0.72);cursor:pointer;border-left:3px solid transparent;transition:all .15s;user-select:none;}
-.ni:hover{background:rgba(255,255,255,0.06);color:#fff;}.ni.active{background:rgba(184,70,15,0.22);color:#e8a87c;border-left-color:var(--accent2);}
-.ni-icon{font-size:14px;width:17px;text-align:center;flex-shrink:0;}
-.nb{margin-left:auto;font-size:9px;background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:20px;color:rgba(255,255,255,0.4);}.ni.active .nb{background:rgba(184,70,15,0.3);color:#e8a87c;}
-.main{flex:1;overflow-y:auto;}
-.page{display:none;padding:34px 42px;max-width:920px;}
-.page.active{display:block;}
-.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2a4a 100%);color:#fff;padding:40px;border-radius:16px;margin-bottom:24px;position:relative;overflow:hidden;}
-.hero::before{content:'\2696';position:absolute;right:28px;top:12px;font-size:100px;opacity:0.05;line-height:1;}
-.he{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#e8a87c;margin-bottom:8px;}
-.ht{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.2;margin-bottom:8px;}
-.hs{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:500px;}
-.hst{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;}
-.hsn{font-family:var(--serif);font-size:26px;font-weight:600;color:#e8a87c;}.hsl{font-size:11px;color:rgba(255,255,255,0.45);margin-top:1px;}
-.sc{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;margin-bottom:22px;}
-.scard{background:var(--paper);border:1px solid var(--paper3);border-radius:11px;padding:15px 17px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
-.scard:hover{border-color:var(--accent2);box-shadow:0 3px 12px rgba(184,70,15,0.1);transform:translateY(-1px);}
-.scard::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--ca,var(--accent));}
-.ci{font-size:18px;margin-bottom:5px;}.ct{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;}.cm{font-size:11px;color:var(--ink4);}
-.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin-top:5px;font-weight:500;}
-.th{background:#fde8e0;color:#b8460f;}.tm{background:#fdf5e0;color:#9a6c10;}.tl{background:#e8f0fb;color:#1a5fa8;}
-.ph{margin-bottom:24px;border-bottom:2px solid var(--paper3);padding-bottom:18px;}
-.pe{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
-.pt{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);line-height:1.2;}
-.ps{font-size:13.5px;color:var(--ink3);margin-top:6px;line-height:1.6;}
-.pm{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
-.mp{font-size:11px;padding:3px 10px;background:var(--paper2);border:1px solid var(--paper3);border-radius:20px;color:var(--ink3);}
-.cn{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px;}
-.cb{padding:5px 12px;border-radius:6px;border:1px solid var(--paper3);background:var(--paper);color:var(--ink3);font-size:12px;cursor:pointer;transition:all .15s;font-family:var(--sans);}
-.cb:hover{border-color:var(--accent2);color:var(--accent);}.cb.active{background:var(--accent);color:#fff;border-color:var(--accent);}
-.cc{display:none;}.cc.active{display:block;}
-h2.ph2{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);margin:24px 0 5px;padding:10px 15px;background:linear-gradient(90deg,var(--accent-bg),transparent);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
-h2.ph2.bl{background:linear-gradient(90deg,var(--blue-bg),transparent);border-left-color:var(--blue);}
-h2.ph2.gr{background:linear-gradient(90deg,var(--green-bg),transparent);border-left-color:var(--green);}
-h2.ph2.gd{background:linear-gradient(90deg,var(--gold-bg),transparent);border-left-color:var(--gold);}
-h3.sh{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);margin:20px 0 9px;padding-bottom:4px;border-bottom:1px solid var(--paper3);}
-p.pr{font-family:var(--serif);font-size:16px;line-height:1.85;color:var(--ink2);margin-bottom:13px;}
-.ls{background:var(--paper);border:1px solid var(--paper3);border-radius:10px;margin-bottom:9px;overflow:hidden;}
-.lsh{padding:11px 17px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .15s;}
-.lsh:hover{background:var(--paper2);}
-.sn{font-family:var(--mono);font-size:10.5px;background:var(--accent-bg);color:var(--accent);padding:2px 7px;border-radius:4px;font-weight:600;flex-shrink:0;border:1px solid rgba(184,70,15,0.2);}
-.sn.b{background:var(--blue-bg);color:var(--blue);border-color:rgba(26,95,168,0.2);}
-.sn.g{background:var(--green-bg);color:var(--green);border-color:rgba(42,122,74,0.2);}
-.sn.gd{background:var(--gold-bg);color:var(--gold);border-color:rgba(200,147,42,0.2);}
-.sn.p{background:var(--purple-bg);color:var(--purple);border-color:rgba(106,42,138,0.2);}
-.stx{font-size:13.5px;font-weight:600;color:var(--ink);flex:1;}
-.sa{color:var(--ink4);font-size:11px;transition:transform .2s;}.ls.open .sa{transform:rotate(90deg);}
-.lsb{display:none;padding:2px 17px 17px;}.ls.open .lsb{display:block;}
-.st{font-family:var(--serif);font-size:16px;line-height:1.85;color:var(--ink2);margin-bottom:10px;}
-.nt{background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#5a4010;margin-bottom:9px;line-height:1.6;}
-.nt strong{color:var(--gold);}
-.ex{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#0d2d54;margin-bottom:9px;line-height:1.6;}
-.ex strong{color:var(--blue);}
-.cs{background:var(--purple-bg);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#3a1050;margin-bottom:9px;line-height:1.6;}
-.cs strong{color:var(--purple);}
-.em{background:var(--accent-bg);border:1px dashed rgba(184,70,15,0.3);border-radius:6px;padding:9px 13px;font-size:12.5px;color:var(--accent);display:flex;gap:7px;align-items:flex-start;margin-bottom:9px;}
-ul.el{list-style:none;margin:8px 0;}
-ul.el li{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--paper2);font-family:var(--serif);font-size:15.5px;color:var(--ink2);line-height:1.55;}
-ul.el li:last-child{border-bottom:none;}
-.en{font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-bg);padding:2px 5px;border-radius:4px;flex-shrink:0;height:17px;margin-top:3px;}
-.en.b{color:var(--blue);background:var(--blue-bg);}.en.g{color:var(--green);background:var(--green-bg);}
-table.ct{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;border-radius:8px;overflow:hidden;}
-table.ct th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:0.04em;}
-table.ct td{padding:8px 12px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-family:var(--serif);font-size:14.5px;vertical-align:top;}
-table.ct tr:nth-child(even) td{background:var(--paper2);}
-.tb{background:var(--green-bg);border:1px solid rgba(42,122,74,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#1a4a2c;display:flex;gap:9px;line-height:1.6;}
-.wb{background:var(--accent-bg);border:1px solid rgba(184,70,15,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#6a2008;display:flex;gap:9px;line-height:1.6;}
-.ib{background:var(--blue-bg);border:1px solid rgba(26,95,168,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#0d2d54;display:flex;gap:9px;line-height:1.6;}
-.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
-.sk{background:var(--paper);border:1px solid var(--paper3);border-radius:8px;padding:11px;text-align:center;}
-.skt{font-size:21px;font-weight:600;font-family:var(--serif);}.skl{font-size:10px;color:var(--ink4);margin-top:2px;}
-.qc{max-width:680px;}
-.qq{background:var(--paper);border:1px solid var(--paper3);border-radius:12px;padding:20px;margin-bottom:12px;}
-.qqn{font-size:10.5px;color:var(--ink4);margin-bottom:5px;font-family:var(--mono);}
-.qqs{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;background:var(--accent-bg);color:var(--accent);margin-bottom:7px;font-weight:500;}
-.qqt{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--ink);margin-bottom:15px;}
-.qo{display:flex;flex-direction:column;gap:6px;}
-.qopt{padding:9px 14px;border:1px solid var(--paper3);border-radius:7px;cursor:pointer;font-size:13px;color:var(--ink2);transition:all .15s;display:flex;gap:8px;align-items:flex-start;}
-.qopt:hover{border-color:var(--accent2);background:var(--accent-bg);}
-.qopt.correct{background:var(--green-bg);border-color:var(--green);color:var(--green);}
-.qopt.wrong{background:#fde8e0;border-color:#d44;color:#a22;}
-.qol{font-family:var(--mono);font-size:10px;font-weight:600;width:17px;flex-shrink:0;margin-top:2px;}
-.qexp{background:var(--gold-bg);border:1px solid rgba(200,147,42,0.25);border-radius:7px;padding:11px 14px;margin-top:9px;display:none;font-size:13px;color:#5a4010;line-height:1.65;}
-.qexp.show{display:block;}
-.pb{background:var(--paper3);border-radius:4px;height:5px;margin-top:7px;}
-.pbf{height:5px;border-radius:4px;background:var(--accent);transition:width .4s;}
-.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:all .15s;border:none;}
-.bp{background:var(--accent);color:#fff;}.bp:hover{background:var(--accent2);}
-.bo{background:transparent;border:1px solid var(--paper3);color:var(--ink2);}.bo:hover{border-color:var(--accent2);color:var(--accent);}
-.qscore{text-align:center;padding:30px;background:var(--paper);border-radius:12px;border:1px solid var(--paper3);}
-.qsn{font-family:var(--serif);font-size:52px;font-weight:600;color:var(--accent);}
-@media(max-width:720px){
-  .sidebar{position:fixed;top:52px;left:0;height:calc(100vh - 52px);z-index:90;transform:translateX(-100%);}
-  .sidebar.open{transform:translateX(0);}
-  .menu-btn{display:block;}
-  .page{padding:16px 14px;}
-  .hero{padding:20px 18px;}.ht{font-size:24px;}
-  .sr{grid-template-columns:1fr 1fr;}
-  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:89;}
-  .overlay.show{display:block;}
-}
-</style>
-</head>
-<body>
-<div class="topbar">
-  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
-  <div class="topbar-brand">⚖ BJS Law <span>Complete Study</span></div>
-  <div class="topbar-meta">LLB Hons · UITS · BJS + Bar Council + Govt Jobs</div>
-</div>
-<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-<div class="layout">
-<nav class="sidebar" id="sidebar">
-  <div class="ss"><div class="ssl">Study Hub</div>
-    <div class="ni active" onclick="showPage('home')"><span class="ni-icon">🏠</span> Dashboard</div>
-    <div class="ni" onclick="showPage('quiz')"><span class="ni-icon">📝</span> MCQ Quiz <span class="nb" id="sidebar-qcount">30 Qs</span></div>
-  </div>
-  <div class="ss"><div class="ssl">Core Criminal Law</div>
-    <div class="ni" onclick="showPage('penal')"><span class="ni-icon">⚖️</span> Penal Code 1860 <span class="nb">High</span></div>
-    <div class="ni" onclick="showPage('crpc')"><span class="ni-icon">🔍</span> CrPC 1898 <span class="nb">High</span></div>
-    <div class="ni" onclick="showPage('evidence')"><span class="ni-icon">👁</span> Evidence Act 1872 <span class="nb">High</span></div>
-  </div>
-</nav>
-<main class="main">
-<div class="page active" id="home">
-<div class="hero">
-  <div class="he">BJS · Bar Council · Government Jobs · Complete Reference</div>
-  <div class="ht">Your Complete Bangladesh Law Study Book</div>
-  <div class="hs">Every core Act fully explained — bare text, definitions, case principles, illustrations, exam tips and 30 MCQ questions. Replaces buying 12 different textbooks.</div>
-  <div class="hst">
-    <div><div class="hsn">12</div><div class="hsl">Acts covered</div></div>
-    <div><div class="hsn">500+</div><div class="hsl">Sections explained</div></div>
-    <div><div class="hsn">30</div><div class="hsl">MCQ questions</div></div>
-    <div><div class="hsn">100+</div><div class="hsl">Exam tips</div></div>
-  </div>
-</div>
-<div class="sr">
-  <div class="sk"><div class="skt" style="color:var(--green)">5✓</div><div class="skl">Semesters done</div></div>
-  <div class="sk"><div class="skt" style="color:var(--accent)">3</div><div class="skl">Semesters left</div></div>
-  <div class="sk"><div class="skt" style="color:var(--blue)">~18mo</div><div class="skl">Time to BJS</div></div>
-</div>
-<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:11px;">Select a subject to start reading</div>
-<div class="sc">
-  <div class="scard" onclick="showPage('penal')" style="--ca:#b8460f"><div class="ci">⚖️</div><div class="ct">Penal Code 1860</div><div class="cm">511 sections · All crimes &amp; punishments</div><div class="tag th">🔴 Highest priority</div></div>
-  <div class="scard" onclick="showPage('quiz')" style="--ca:#b8460f"><div class="ci">📝</div><div class="ct">MCQ Practice — 30 Questions</div><div class="cm">Penal Code 1860 High Yield Standard</div><div class="tag th">⭐ Do daily</div></div>
-</div>
-</div>
+<!-- Main Application Wrapper -->
+<div class="app-container" style="display: flex; min-height: 100vh;">
+  
+  <!-- UPDATED SIDEBAR NAVIGATION WITH ALL LINKS -->
+  <aside class="sidebar" style="width: 260px; border-right: 1px solid #ddd; padding: 20px;">
+    <div class="sidebar-brand" style="font-weight: bold; margin-bottom: 20px;">Law Academy</div>
+    <nav class="sidebar-nav">
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 12px;">
+          <a href="#constitution" class="nav-link" style="text-decoration: none; color: inherit;">🏛️ Constitution</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#cpc" class="nav-link" style="text-decoration: none; color: inherit;">📘 CPC, 1908</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#sra" class="nav-link" style="text-decoration: none; color: inherit;">⚖️ Specific Relief Act, 1877</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#contract-act" class="nav-link" style="text-decoration: none; color: inherit;">📜 Contract Act, 1872</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#limitation-act" class="nav-link" style="text-decoration: none; color: inherit;">⏳ Limitation Act, 1908</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#crpc" class="nav-link" style="text-decoration: none; color: inherit;">📖 CrPC, 1898</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#landmark-cases" class="nav-link" style="text-decoration: none; color: inherit;">⚖️ Landmark Cases</a>
+        </li>
+        <li style="margin-bottom: 12px;">
+          <a href="#evidence-act" class="nav-link active" style="text-decoration: none; color: inherit; font-weight: bold;">📜 Evidence Act, 1872</a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
 
-<!-- Quiz Page Component -->
-<div class="page" id="quiz">
-  <div class="ph">
-    <div class="pe">Test Assessment</div>
-    <div class="pt">High-Yield Law Quiz Dashboard</div>
-    <div class="ps">Simulating formal BJS and Bar Council standards focused directly on the Penal Code 1860 provisions.</div>
-    <div class="pb"><div class="pbf" id="quiz-progress" style="width: 0%"></div></div>
-  </div>
-  <div id="quiz-container" class="qc">
-    <!-- Active Questions or Score Summary injected dynamically by JavaScript -->
-  </div>
-</div>
+  <!-- MAIN CONTENT WINDOW -->
+  <main class="content-window" style="flex: 1; padding: 40px;">
 
-<!-- Placeholder pages for minimal layout functionality -->
-<div class="page" id="penal">
-  <div class="ph">
-    <div class="pe">Criminal Law</div>
-    <div class="pt">The Penal Code, 1860</div>
-    <div class="ps">Substantive criminal law of Bangladesh containing 511 sections defining offenses and punishments. Use the MCQ Quiz tab to test your high-yield knowledge.</div>
-  </div>
-</div>
-<div class="page" id="crpc">
-  <div class="ph"><div class="pe">Procedural Law</div><div class="pt">Code of Criminal Procedure, 1898</div></div>
-</div>
-<div class="page" id="evidence">
-  <div class="ph"><div class="pe">Adjective Law</div><div class="pt">Evidence Act, 1872</div></div>
-</div>
-</main>
+    <!-- ========================================================= -->
+    <!-- SECTION: CONSTITUTION OF BANGLADESH VIEW                  -->
+    <!-- ========================================================= -->
+    <div class="page" id="constitution" style="margin-top: 60px; display: none;">
+      <div class="ph">
+        <div class="pe">Supreme Law of the Republic</div>
+        <div class="pt">The Constitution of Bangladesh</div>
+        <div class="ps">The foundational legal framework specifying the structure of governance, checks and balances, and guaranteed fundamental human rights.</div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- SECTION: CODE OF CIVIL PROCEDURE (CPC), 1908 VIEW     -->
+    <!-- ========================================================= -->
+    <div class="page" id="cpc" style="margin-top: 60px; display: none;">
+      <div class="ph">
+        <div class="pe">Procedural Law</div>
+        <div class="pt">Code of Civil Procedure, 1908</div>
+        <div class="ps">The procedural backbone governing the administration, trial stages, and enforcement of decrees in civil disputes in Bangladesh.</div>
+      </div>
+
+      <!-- SECTION 1: RES JUDICATA VS RES SUB-JUDICE -->
+      <h2 class="ph2 bl">1. Res Judicata vs. Res Sub-Judice</h2>
+      <p class="pr">These two pillars ensure the finality of litigation and prevent a single cause of action from creating concurrent conflicting decisions or infinite trials between identical parties.</p>
+
+      <table class="ct">
+        <thead>
+          <tr>
+            <th>Legal Parameter</th>
+            <th>Res Sub-Judice (Section 10)</th>
+            <th>Res Judicata (Section 11)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Core Meaning</strong></td>
+            <td>A matter currently pending active trial in a competent court.</td>
+            <td>A matter that has already been conclusively decided by a competent court.</td>
+          </tr>
+          <tr>
+            <td><strong>Court's Action</strong></td>
+            <td>The court **stays the trial** of any subsequent suit until the first matter finishes.</td>
+            <td>The court **completely bars the institution** or trial of the subsequent suit out of hand.</td>
+          </tr>
+          <tr>
+            <td><strong>Prerequisites</strong></td>
+            <td>Two suits filed concurrently; the matter in issue must be directly and substantially identical in both.</td>
+            <td>A previously decided suit exists; the matter was directly and substantially heard and finally decided.</td>
+          </tr>
+          <tr>
+            <td><strong>Objective</strong></td>
+            <td>To prevent courts of concurrent jurisdiction from rendering conflicting decisions on the same right.</td>
+            <td>To enforce the maxims of finality and prevent a defendant from being vexed twice for the same cause.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SECTION 2: TEMPORARY INJUNCTIONS -->
+      <h2 class="ph2 gr">2. Temporary Injunctions: Order 39 (Rules 1-2)</h2>
+      <p class="pr">Temporary injunctions are an equitable relief mechanism intended to preserve the exact physical status quo of a disputed property pending the final disposal of the suit.</p>
+
+      <div class="wb">
+        <strong>The Golden Tripartite Test:</strong> To secure protection under Order 39, the plaintiff must prove:
+        1. <em>Prima Facie Case:</em> A bonafide, triable issue exists.
+        2. <em>Irreparable Loss:</em> Injury that cannot be adequately compensated by financial damages.
+        3. <em>Balance of Inconvenience:</em> Greater hardship will fall on the plaintiff if the injunction is refused than on the defendant if granted.
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">Order 39 R 1</span>
+          <span class="stx"><strong>Cases Where Temporary Injunction May Be Granted</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">Granted where it is proved by affidavit or otherwise that any property in dispute in a suit is in danger of being wasted, damaged, or alienated by any party, or wrongfully sold in execution of a decree, or where the defendant threatens to remove or dispose of their property to defraud creditors.</p>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">Order 39 R 2</span>
+          <span class="stx"><strong>Injunction to Restrain Breach of Contract or Injury</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">In any suit for restraining the defendant from committing a breach of contract or other injury, the plaintiff may apply for a temporary injunction to restrain the defendant from committing the breach or injury complained of, or any breach of contract or injury of a like kind arising out of the same contract.</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3: REJECTION VS RETURN OF PLAINT -->
+      <h2 class="ph2 gd">3. Rejection of Plaint (O. 7 R. 11) vs. Return of Plaint (O. 7 R. 10)</h2>
+      <p class="pr">When a plaint suffers from structural defects, the Code provides distinct pathways based on whether the defect is a fatal legal bar or a simple choice of the wrong forum.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">O. 7 R. 11</span>
+          <span class="stx"><strong>Rejection of Plaint (Fatal Faults)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">The court **must reject** the plaint under four explicit statutory conditions:</p>
+          <ul class="el">
+            <li><span class="en">A</span> <div>Where it does not disclose a clear cause of action.</div></li>
+            <li><span class="en">B</span> <div>Where the relief claimed is undervalued, and the plaintiff fails to correct it within the time fixed by the court.</div></li>
+            <li><span class="en">C</span> <div>Where the relief is properly valued but written on insufficiently stamped paper, and the default is not cured.</div></li>
+            <li><span class="en">D</span> <div>Where the suit appears from the statement in the plaint to be completely barred by any law.</div></li>
+          </ul>
+          <div class="em"><strong>Crucial Decree Impact:</strong> A rejection of a plaint under Order 7 Rule 11 is deemed a "Decree" under Section 2(2) CPC. Therefore, it is appealable and does not bar the filing of a fresh plaint on the same cause of action.</div>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">O. 7 R. 10</span>
+          <span class="stx"><strong>Return of Plaint (Wrong Forum)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">The plaint is returned at any stage of the suit to be presented to the proper Court in which the suit should have been instituted. This occurs exclusively due to a lack of pecuniary, territorial, or subject-matter jurisdiction. The suit is not killed; it is simply redirected to the correct court.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- NEWLY BUILT SECTION: SPECIFIC RELIEF ACT, 1877 VIEW        -->
+    <!-- ========================================================= -->
+    <div class="page" id="sra" style="margin-top: 60px; display: none;">
+      <div class="ph">
+        <div class="pe">Substantive Equity Law</div>
+        <div class="pt">The Specific Relief Act, 1877</div>
+        <div class="ps">Statutory framework providing tailored, equitable remedies such as recovery of possession, specific performance, rescission, cancellation, and injunctions.</div>
+      </div>
+
+      <!-- SECTION 1: RECOVERY OF POSSESSION -->
+      <h2 class="ph2 bl">1. Recovery of Possession: Section 8 vs. Section 9</h2>
+      <p class="pr">The Act provides two distinct civil options for individuals seeking recovery of immovable property depending on title strength and the urgency of the dispossession.</p>
+
+      <table class="ct">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Section 8 (Title-Based)</th>
+            <th>Section 9 (Possession-Based Summary Suit)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Core Foundation</strong></td>
+            <td>Based entirely on regular legal ownership or title.</td>
+            <td>Based strictly on previous peaceful possession; title is irrelevant.</td>
+          </tr>
+          <tr>
+            <td><strong>Limitation Period</strong></td>
+            <td>**12 Years** under Article 142 or 144 of the Limitation Act.</td>
+            <td>**6 Months** from the exact date of dispossession.</td>
+          </tr>
+          <tr>
+            <td><strong>Requirement</strong></td>
+            <td>Plaintiff must prove dynamic ownership and superior title.</td>
+            <td>Must prove sudden, dispossession without consent and outside due process of law.</td>
+          </tr>
+          <tr>
+            <td><strong>Remedy Against State</strong></td>
+            <td>A regular suit under Section 8 **can** be filed against the Government.</td>
+            <td>Section 9 explicitly states **no suit can be brought** against the Government.</td>
+          </tr>
+          <tr>
+            <td><strong>Appeal / Review Rules</strong></td>
+            <td>Regular decree layout: **Appeals and Reviews are allowed**.</td>
+            <td>**No Appeal or Review lies** from any order or decree passed under Section 9. Revision is allowed.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SECTION 2: SPECIFIC PERFORMANCE OF CONTRACTS -->
+      <h2 class="ph2 gr">2. Specific Performance: Section 12 vs. Section 21</h2>
+      <p class="pr">Courts balance equity to decide when a party must complete a physical contract versus when financial damages provide a complete, adequate alternative.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">Section 12</span>
+          <span class="stx"><strong>Contracts Which Can Be Specifically Enforced</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">Specific performance may be granted at judicial discretion under the following conditions:</p>
+          <ul class="el">
+            <li><span class="en">A</span> <div>When the act agreed to be done is in the performance, wholly or partly, of a trust.</div></li>
+            <li><span class="en">B</span> <div>When there exists no standard for ascertaining the actual damage caused by the non-performance of the act.</div></li>
+            <li><span class="en">C</span> <div>When the act is such that pecuniary compensation would not afford adequate relief (e.g., transfers of unique immovable property).</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">Section 21</span>
+          <span class="stx"><strong>Contracts Which Cannot Be Specifically Enforced</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">The court cannot command performance for the following statutory exclusions:</p>
+          <ul class="el">
+            <li><span class="en">1</span> <div>A contract where monetary compensation is an adequate relief option.</div></li>
+            <li><span class="en">2</span> <div>Contracts running into minute or numerous details, or dependent on personal qualifications/volition (e.g., marriage, personal services).</div></li>
+            <li><span class="en">3</span> <div>Contracts which are by nature highly determinable (can be terminated at will by either party).</div></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 3: RESCISSION VS CANCELLATION -->
+      <h2 class="ph2 gd">3. Rescission of Contracts (Sec. 35) vs. Cancellation of Instruments (Sec. 39)</h2>
+      <p class="pr">These remedies dissolve dynamic obligations or destroy physical legal documents to prevent future fraud or injustice.</p>
+
+      <div class="wb">
+        <strong>Section 35 (Rescission of Contracts):</strong> Any person interested in a contract may sue to have it rescinded if the contract is voidable or terminable by the plaintiff, or if the contract is unlawful for causes not apparent on its face and the defendant is more to blame.
+      </div>
+
+      <div class="wb">
+        <strong>Section 39 (Cancellation of Instruments):</strong> Any person against whom a written instrument is void or voidable, and who has reasonable apprehension that such instrument, if left outstanding, may cause them serious injury, may sue to have it adjudged void or voidable and ordered to be delivered up and cancelled.
+      </div>
+
+      <!-- SECTION 4: TYPES OF INJUNCTIONS -->
+      <h2 class="ph2 bl">4. Types of Injunctions: Perpetual (Sec. 54) vs. Mandatory (Sec. 55)</h2>
+      <p class="pr">Preventive relief is granted through injunctions that either restrain a wrongful act or compel the performance of a necessary task.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 54</span>
+          <span class="stx"><strong>Perpetual Injunctions (Preventive Restraint)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">A perpetual injunction can only be granted by a final decree made at the hearing upon the merits of the suit. It permanently enjoys the defendant from asserting a right or committing an act which would be contrary to the rights of the plaintiff. It is triggered when the defendant invades or threatens to invade the plaintiff's right to, or enjoyment of, property.</p>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 55</span>
+          <span class="stx"><strong>Mandatory Injunctions (Compelled Performance)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">When, to prevent the breach of an obligation, it is necessary to compel the performance of certain acts which the Court is capable of enforcing, the Court may in its discretion grant an injunction to prevent the breach complained of, and also to compel performance of the requisite acts (e.g., ordering the demolition of a wall built illegally blocking easement rights).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- NEWLY BUILT SECTION: THE CONTRACT ACT, 1872 VIEW          -->
+    <!-- ========================================================= -->
+    <div class="page" id="contract-act" style="margin-top: 60px; display: none;">
+      <div class="ph">
+        <div class="pe">Substantive Commercial Law</div>
+        <div class="pt">The Contract Act, 1872</div>
+        <div class="ps">The legal architecture establishing how agreements are structured, validated, performed, breached, and compensated.</div>
+      </div>
+
+      <!-- SECTION 1: ESSENTIAL ELEMENTS -->
+      <h2 class="ph2 bl">1. Essential Elements of a Valid Contract: Section 10</h2>
+      <p class="pr">An agreement remains a non-binding promise unless it satisfies the core validity criteria explicitly set forth under Section 10 of the Act.</p>
+
+      <div class="wb">
+        <strong>Statutory Command:</strong> All agreements are contracts if they are made by the **free consent** of parties **competent to contract**, for a **lawful consideration** and with a **lawful object**, and are not hereby expressly declared to be void.
+      </div>
+
+      <ul class="el">
+        <li><span class="en">1</span> <div><strong>Competency (Section 11):</strong> Parties must be of the age of majority, of sound mind, and not disqualified by law.</div></li>
+        <li><span class="en">2</span> <div><strong>Free Consent (Section 14):</strong> Consent is free when it is not caused by Coercion (Sec. 15), Undue Influence (Sec. 16), Fraud (Sec. 17), Misrepresentation (Sec. 18), or Mistake (Sec. 20-22).</div></li>
+        <li><span class="en">3</span> <div><strong>Lawful Object &amp; Consideration (Section 23):</strong> Must not be fraudulent, cause injury to others, or be opposed to public policy.</div></li>
+      </ul>
+
+      <!-- SECTION 2: VOID VS VOIDABLE -->
+      <h2 class="ph2 gr">2. Structural Status: Void Agreements vs. Voidable Contracts</h2>
+      <p class="pr">The Act draws sharp technical distinctions between agreements that carry zero legal life from inception and those that remain conditional on a party's choice.</p>
+
+      <table class="ct">
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Void Agreement: Section 2(g)</th>
+            <th>Voidable Contract: Section 2(i)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Statutory Definition</strong></td>
+            <td>An agreement not enforceable by law is said to be void.</td>
+            <td>An agreement enforceable by law at the option of one or more parties, but not at the option of the other.</td>
+          </tr>
+          <tr>
+            <td><strong>Legal Status</strong></td>
+            <td>*Void ab initio* — Dead from the very beginning. Holds no legal existence.</td>
+            <td>Valid and operational until explicitly repudiated by the aggrieved party.</td>
+          </tr>
+          <tr>
+            <td><strong>Primary Causes</strong></td>
+            <td>Incompetency of parties (minority), unlawful objects, or agreements in restraint of marriage/trade.</td>
+            <td>When consent to an agreement is obtained via coercion, undue influence, fraud, or misrepresentation.</td>
+          </tr>
+          <tr>
+            <td><strong>Restitution</strong></td>
+            <td>Any benefit received must be restored under Section 65.</td>
+            <td>If rescinded, benefits received must be returned to the other party under Section 64.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- SECTION 3: CONTINGENT VS QUASI CONTRACTS -->
+      <h2 class="ph2 gd">3. Special Modalities: Contingent Contracts vs. Quasi-Contracts</h2>
+      <p class="pr">Contracts can be anchored to uncertain future occurrences or constructed implicitly by equity to avoid unjust enrichment.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 31</span>
+          <span class="stx"><strong>Contingent Contracts (Conditional Obligations)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">A contingent contract is a contract to do or not to do something, if some event, collateral to such contract, does or does not happen. Performance depends completely on the arrival or failure of a third-party event (e.g., insurance contracts).</p>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 68-72</span>
+          <span class="stx"><strong>Quasi-Contracts (Relations Resembling Contracts)</strong></span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">These are obligations imposed by law even in the absence of a formal agreement, founded on the equitable principle that no individual should grow rich off another's loss:</p>
+          <ul class="el">
+            <li><strong>Section 68:</strong> Claim for necessaries supplied to a person incapable of contracting.</li>
+            <li><strong>Section 69:</strong> Reimbursement of a person paying money due by another, in the payment of which he is interested.</li>
+            <li><strong>Section 70:</strong> Obligation of a person enjoying the benefit of a non-gratuitous act.</li>
+            <li><strong>Section 71:</strong> Responsibility of a finder of goods to take care of them and locate the owner.</li>
+            <li><strong>Section 72:</strong> Liability of a person to whom money is paid or things delivered by mistake or under coercion.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SECTION 4: BREACH AND LIQUIDATED DAMAGES -->
+      <h2 class="ph2 bl">4. Consequences of Breach of Contract: Section 73</h2>
+      <p class="pr">When a party breaks an obligation, the law steps in to calculate financial remedies aimed at shifting the financial burden back to the defaulting party.</p>
+
+      <div class="wb">
+        <strong>Section 73 (Compensation for Loss or Damage):</strong> When a contract has been broken, the party who suffers by such breach is entitled to receive from the party who has broken the contract, compensation for any loss or damage caused to him thereby, which **naturally arose in the usual course of things** from such breach, or which the parties knew, when they made the contract, to be likely to result from the breach.
+      </div>
+
+      <div class="em">
+        <strong>Liquidated Damages Framework:</strong> Unlike English Common Law, which draws a strict distinction between liquidated damages (genuine pre-estimates) and penalties (punitive sums), courts in Bangladesh applying Section 74 look at the named sum as the absolute maximum cap. The court will only award **reasonable compensation** up to, but not exceeding, the amount stipulated in the contract.
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- THE LIMITATION ACT, 1908 VIEW                             -->
+    <!-- ========================================================= -->
+    <div class="page" id="limitation-act" style="margin-top: 60px; display: none;">
+      <div class="ph">
+        <div class="pe">Procedural &amp; Substantive Policy</div>
+        <div class="pt">The Limitation Act, 1908</div>
+        <div class="ps">Statutory rules regulating the time thresholds within which suits, appeals, and applications must be brought before judicial forums.</div>
+      </div>
+
+      <!-- SECTION 1: DISMISSAL UNDER SECTION 3 -->
+      <h2 class="ph2 bl">1. The Harsh Reality of Section 3: Absolute Mandatory Dismissal</h2>
+      <p class="pr">Section 3 stands as the unyielding gatekeeper of legal finality. It acts independently of whether the defense is explicitly raised by the opposing party.</p>
+
+      <div class="wb">
+        <strong>Statutory Command:</strong> Subject to the provisions contained in sections 4 to 25 inclusive, every suit instituted, appeal preferred, and application made after the period of limitation prescribed therefor by the first schedule **shall be dismissed**, although limitation has not been set up as a defense.
+      </div>
+
+      <div class="em">
+        <strong>Exam Strategy Warning:</strong> Section 3 leaves zero judicial discretion to equity. Even if a claim is morally flawless and true, if the clock has run out, the court holds no jurisdiction to hear it. It affects the remedy, not the underlying right.
+      </div>
+
+      <!-- SECTION 2: CONDONATION OF DELAY -->
+      <h2 class="ph2 gr">2. Condonation of Delay: Section 5</h2>
+      <p class="pr">Section 5 acts as an equitable valve, allowing extensions of time if the applicant satisfies the court that they had **sufficient cause** for not preferring the action within the statutory window.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">Scope</span>
+          <span class="stx">Where can Section 5 be applied?</span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">Applies strictly to **Appeals** and **Applications** (such as review, revision, or leave to appeal applications). The court may condone the delay if the appellant shows sufficient cause (e.g., severe illness, imprisonment, or a bona fide mistake of counsel).</p>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn g">The Exception Bar</span>
+          <span class="stx">Absolute Exclusion of Suits</span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st" style="color: #c0392b; font-weight: bold;">Section 5 does NOT apply to original Suits or execution proceedings under Order 21 CPC.</p>
+          <p class="st">If an original civil suit is delayed by even a single day beyond the First Schedule time-frame, Section 5 cannot be used to salvage it. The delay in original suits can only be offset by dynamic statutory exemptions like Legal Disability (Section 6) or Fraud (Section 18).</p>
+        </div>
+      </div>
+
+      <!-- SECTION 3: LEGAL DISABILITY & FRAUD -->
+      <h2 class="ph2 gd">3. Exceptions: Legal Disability (Sec. 6) &amp; Effect of Fraud (Sec. 18)</h2>
+      <p class="pr">The law pauses or resets the limitation clock when the plaintiff is structurally incapable of pursuing their legal remedy due to internal disability or external deception.</p>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 6</span>
+          <span class="stx"><strong>Legal Disability</strong> (Clock Extension)</span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">Where a person entitled to institute a suit or make an application for the execution of a decree is, at the time from which the period of limitation is to be reckoned, a **minor**, **insane**, or an **idiot**, they may institute the suit or make the application within the same period after the disability has ceased.</p>
+          <ul class="el">
+            <li>If a person is affected by two consecutive disabilities (e.g., minor and insane), the clock remains paused until both disabilities are fully lifted.</li>
+            <li>Does not apply to appeals or regular interlocutory applications.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ls">
+        <div class="lsh" onclick="toggleSection(this)">
+          <span class="sn">Sec 18</span>
+          <span class="stx"><strong>Effect of Fraud</strong> (Resetting the Clock)</span>
+          <span class="sa">▶</span>
+        </div>
+        <div class="lsb">
+          <p class="st">Where a person having a right to institute a suit or make an application has been kept from knowledge of such right or title by means of fraud, or where any document necessary to establish such right has been fraudulently concealed, the limitation clock **restarts** only when the fraud first becomes known to the affected party.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- EVIDENCE ACT, 1872 VIEW (EXISTING)                         -->
+    <!-- ========================================================= -->
+    <div class="page" id="evidence-act">
+      <!-- ... Rest of your existing Evidence Act content ... -->
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- LANDMARK JUDGMENTS VIEW (EXISTING)                         -->
+    <!-- ========================================================= -->
+    <div class="page" id="landmark-cases" style="margin-top: 60px; display: none;">
+      <!-- ... Rest of your existing Landmark Cases content ... -->
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CODE OF CRIMINAL PROCEDURE (CrPC) VIEW (EXISTING)           -->
+    <!-- ========================================================= -->
+    <div class="page" id="crpc" style="margin-top: 60px; display: none;">
+      <!-- ... Rest of your existing CrPC content ... -->
+    </div>
+
+  </main>
 </div>
 
 <script>
-// Toggle and routing functions
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('show');}
-function closeSidebar(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('show');}
-function showPage(pageId){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
-  const targetPage = document.getElementById(pageId);
-  if(targetPage) targetPage.classList.add('active');
-  const navItem = document.querySelector(`[onclick="showPage('${pageId}')"]`);
-  if(navItem) navItem.classList.add('active');
-  closeSidebar();
-  if(pageId === 'quiz' && currentQuestionIndex === 0 && score === 0) { renderQuestion(); }
-}
-function toggleSection(el){el.parentElement.classList.toggle('open');}
-
-// Complete 30 High Yield Questions Array for Penal Code 1860 (BJS/Bar Council Standards)
 const questions = [
   {
-    act: "Penal Code 1860",
-    subject: "General Explanations",
-    text: "Under the Penal Code 1860, the term 'Common Intention' as defined under Section 34 requires which of the following vital legal components?",
-    options: [
-      "Prior meeting of minds, pre-arranged plan, and active physical participation in the criminal act.",
-      "Mere identical intention of multiple persons acting spontaneously without pre-concert.",
-      "Knowledge shared among co-accused that an offense is likely to be committed by one of them.",
-      "The presence of same or similar intention to achieve an identical result without any coordination."
-    ],
-    correct: 0,
-    explanation: "Section 34 of the Penal Code 1860 incorporates the principle of joint liability. It demands a pre-arranged plan, prior meeting of minds ('pre-concert'), and active participation in the commission of the act. Identical or similar intention without prior arrangement does not invoke Section 34 liability."
+    id: 1,
+    category: "CrPC",
+    question: "A confession made to a police officer under the Code of Criminal Procedure is:",
+    options: ["Fully admissible", "Admissible with Magistrate permission", "Strictly inadmissible", "Admissible if corroborated"],
+    answer: "Strictly inadmissible",
+    explanation: "Section 25 of the Evidence Act explicitly bars confessions made to police officers."
+  },
+  
+  // =========================================================
+  // BATCH: 30 CONSTITUTIONAL LAW MCQS FOR BANGLADESH
+  // =========================================================
+  {
+    id: 2,
+    category: "Constitution",
+    question: "Which Article of the Constitution establishes that the Constitution is the supreme law of the Republic?",
+    options: ["Article 7", "Article 1", "Article 26", "Article 44"],
+    answer: "Article 7",
+    explanation: "Article 7 declares that all powers in the Republic belong to the people, and the Constitution is the supreme law of the Republic."
+  },
+
+  // =========================================================
+  // BATCH: 15 SPECIFIC RELIEF ACT 1877 MCQS
+  // =========================================================
+  {
+    id: 3,
+    category: "Specific Relief Act",
+    question: "Under the Specific Relief Act 1877, within what timeline must a dynamic possession-based summary suit under Section 9 be filed?",
+    options: ["3 months from dispossession", "6 months from dispossession", "1 year from dispossession", "3 years from dispossession"],
+    answer: "6 months from dispossession",
+    explanation: "Section 9 of the Specific Relief Act 1877 explicitly mandates a strict summary timeline of 6 months from the date of dispossession."
   },
   {
-    act: "Penal Code 1860",
-    subject: "General Explanations",
-    text: "A and B plan to threaten C. During the confrontation, A suddenly pulls out a concealed knife and stabs C to death. B was unarmed and did not foresee this act. For which offense can B be made liable using Section 34?",
-    options: [
-      "B is liable for Murder under Section 302 read with Section 34 because the act occurred during their joint enterprise.",
-      "B is liable only for the act he intended and agreed to perform (criminal intimidation/wrongful restraint), not for murder.",
-      "B is automatically guilty of Culpable Homicide because he accompanied the killer.",
-      "B is completely immune from any liability as he did not hold the murder weapon."
-    ],
-    correct: 1,
-    explanation: "Section 34 applies only to acts done 'in furtherance of the common intention'. Since the common intention extended only to threatening/restraint, and the murder was a sudden, independent act by A outside the scope of the pre-arranged plan, B cannot be held vicariously liable for murder under Section 34."
+    id: 4,
+    category: "Specific Relief Act",
+    question: "Which of the following statements regarding a summary suit instituted under Section 9 of the Specific Relief Act 1877 is correct?",
+    options: ["An appeal lies from the decree", "A review lies from the decree", "No appeal or review lies from any order or decree", "Both appeal and review are maintainable"],
+    answer: "No appeal or review lies from any order or decree",
+    explanation: "Section 9 of the Specific Relief Act 1877 explicitly bars both appeals and reviews against any order or decree passed under this section, though revision is allowed."
   },
   {
-    act: "Penal Code 1860",
-    subject: "General Exceptions",
-    text: "At what age does absolute immunity from criminal liability ('Doli incapax') cease to apply to a child under the Penal Code 1860?",
-    options: [
-      "Under 7 years of age.",
-      "Under 9 years of age.",
-      "Under 12 years of age.",
-      "Under 14 years of age."
-    ],
-    correct: 1,
-    explanation: "Under Section 82 of the Penal Code, nothing is an offense which is done by a child under nine years of age. This provides absolute immunity. Note that Section 83 creates a qualified immunity for children between 9 and 12 years based on their maturity of understanding."
+    id: 5,
+    category: "Specific Relief Act",
+    question: "Can a plaintiff file a summary suit for recovery of dynamic possession under Section 9 of the Specific Relief Act 1877 against the Government?",
+    options: ["Yes, with prior 2-month notice", "Yes, without any notice", "No, such a suit cannot be brought against the Government", "Yes, with the permission of the High Court Division"],
+    answer: "No, such a suit cannot be brought against the Government",
+    explanation: "Section 9 of the Specific Relief Act 1877 clearly states that no suit under this section shall be brought against the Government."
   },
   {
-    act: "Penal Code 1860",
-    subject: "General Exceptions",
-    text: "A child of 10 years of age steals a gold necklace from a relative's house and immediately sells it to a third party, utilizing the money to buy sweets. What is the status of the child's criminal liability?",
-    options: [
-      "Completely immune under Section 82 because the child is under 12.",
-      "Liable for theft, because the act of selling the item shows sufficient maturity of understanding under Section 83.",
-      "Not liable, as any action by a minor under 12 is automatically presumed to lack mens rea.",
-      "Liable only if the value of the stolen property exceeds ten thousand Taka."
-    ],
-    correct: 1,
-    explanation: "Section 83 addresses children between 9 and 12 years old. If the child has attained sufficient maturity of understanding to judge the nature and consequences of their conduct, they are liable. The act of hiding or selling the stolen goods shows an active awareness of the wrongful nature of the act."
+    id: 6,
+    category: "Specific Relief Act",
+    question: "A person dispossessed of immovable property without consent wants to claim possession based entirely on regular legal ownership or superior title. Which section applies?",
+    options: ["Section 7", "Section 8", "Section 9", "Section 10"],
+    answer: "Section 8",
+    explanation: "Section 8 of the Specific Relief Act 1877 deals with the recovery of specific immovable property based on regular legal title."
   },
   {
-    act: "Penal Code 1860",
-    subject: "General Exceptions",
-    text: "McNaughten's rules form the core historical foundation for which defense under the General Exceptions of the Penal Code 1860?",
-    options: [
-      "Involuntary Intoxication under Section 85",
-      "Act done by Consent under Section 88",
-      "Insanity / Unsoundness of Mind under Section 84",
-      "Act done under Duress/Compulsion under Section 94"
-    ],
-    correct: 2,
-    explanation: "Section 84 embodies the legal test for insanity based on the celebrated McNaughten case. It establishes that a person is exempt from criminal liability if, at the time of doing the act, by reason of unsoundness of mind, they were incapable of knowing the nature of the act or that it was wrong or contrary to law."
+    id: 7,
+    category: "Specific Relief Act",
+    question: "Under Section 12 of the Specific Relief Act 1877, specific performance of any contract may be determined by the court's discretion when:",
+    options: ["The act agreed to be done is in the performance of a trust", "Monetary compensation is an adequate remedy", "The contract runs into minute details", "The contract is highly determinable by nature"],
+    answer: "The act agreed to be done is in the performance of a trust",
+    explanation: "Section 12(a) of the Specific Relief Act 1877 explicitly provides that specific performance may be enforced when the act agreed to be done is in the performance, wholly or partly, of a trust."
   },
   {
-    act: "Penal Code 1860",
-    subject: "General Exceptions",
-    text: "A is legally bound by his friends at gunpoint and threatened with instant death unless he uses his lockpicking tools to open the safe of a commercial bank for a robbery. A opens the safe. What defense can A claim?",
-    options: [
-      "A can claim complete protection under Section 94 (Act to which a person is compelled by threats).",
-      "A cannot claim any defense because robbery is a severe economic crime.",
-      "A can claim protection under Section 81 as an act causing slight harm to prevent greater harm.",
-      "A can claim protection under Section 92 because his consent was implied."
-    ],
-    correct: 0,
-    explanation: "Section 94 provides an excuse for acts committed under duress or threats of instant death. The only exceptions where this defense is explicitly barred under Section 94 are Murder and Offenses against the State punishable with death. Bank robbery falls under the protected scope of Section 94."
+    id: 8,
+    category: "Specific Relief Act",
+    question: "According to Section 21 of the Specific Relief Act 1877, which of the following contracts CANNOT be specifically enforced?",
+    options: ["A contract where a continuous duty extends over more than 3 years", "A contract to marry or dependent on personal qualifications", "A contract where monetary compensation is not an adequate relief option", "Both A and B"],
+    answer: "Both A and B",
+    options: ["A contract where a continuous duty extends over more than 3 years", "A contract to marry or dependent on personal qualifications", "A contract where monetary compensation is not an adequate relief option", "Both A and B"],
+    answer: "Both A and B",
+    explanation: "Section 21 of the Specific Relief Act 1877 lists contracts that cannot be specifically enforced, including those running into minute details, personal qualifications (like marriage), or continuous duties exceeding three years."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Private Defense",
-    text: "The right of private defense of the body extends to the voluntary causing of death to the assailant under Section 100 if the offense causing the apprehension is:",
-    options: [
-      "An assault with the intention of committing rape or gratifying unnatural lust.",
-      "Any simple hurt caused by a blunt wooden object.",
-      "An act of criminal trespass into an open agricultural field.",
-      "An assault with the intention of committing theft of a mobile phone."
-    ],
-    correct: 0,
-    explanation: "Section 100 sets out 6 (and later 7, including acid attacks) specific scenarios where the right of private defense of the body extends to causing death. Assault with the intention of committing rape, satisfying unnatural lust, or causing apprehension of death/grievous hurt are explicitly included."
+    id: 9,
+    category: "Specific Relief Act",
+    question: "Under Section 21A of the Specific Relief Act 1877, a contract for the sale of immovable property cannot be specifically enforced unless it is:",
+    options: ["In writing and registered", "Oral and witnessed", "Written but unregistered", "Certified by a notary public only"],
+    answer: "In writing and registered",
+    explanation: "Section 21A mandates that the court shall not enforce specific performance of a contract for sale of immovable property unless it is in writing and registered."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Private Defense",
-    text: "Under Section 103, when does the right of private defense of property extend to the voluntary causing of death to the wrongdoer?",
-    options: [
-      "In cases of simple theft, criminal trespass, or mischief under all circumstances.",
-      "In cases of Robbery, House-breaking by night, Mischief by fire on a vessel/dwelling, or theft/trespass under fear of death/grievous hurt.",
-      "When the owner has tried calling the police station but received no response within two hours.",
-      "Whenever the value of the property being damaged or stolen exceeds fifty thousand Taka."
-    ],
-    correct: 1,
-    explanation: "Section 103 explicitly limits the right to cause death in defending property to four major criminal categories: (1) Robbery, (2) House-breaking by night, (3) Mischief by fire committed on a building/tent/vessel used as a human dwelling, and (4) Theft, mischief, or house trespass causing reasonable apprehension of death or grievous hurt."
+    id: 10,
+    category: "Specific Relief Act",
+    question: "Which section of the Specific Relief Act 1877 permits an individual to sue for the Rescission of a dynamic contract?",
+    options: ["Section 31", "Section 35", "Section 39", "Section 42"],
+    answer: "Section 35",
+    explanation: "Section 35 of the Specific Relief Act 1877 sets out the provisions governing when a contract may be rescinded by a person interested therein."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Abetment",
-    text: "A instigates B to murder C. B refuses to execute the request and leaves immediately. What is the criminal liability of A?",
-    options: [
-      "A is not guilty of any offense because the substantive offense of murder was never committed.",
-      "A is guilty of abetting murder under Section 108, explanation 2, as abetment is an independent offense regardless of the outcome.",
-      "A is only guilty of criminal intimidation under Section 506.",
-      "A is liable for an attempt to murder under Section 307."
-    ],
-    correct: 1,
-    explanation: "According to Section 108, Explanation 2, to constitute the offense of abetment, it is NOT necessary that the act abetted should be committed or the effect requisite to constitute the offense should be caused. Instigation itself completes the offense of abetment."
+    id: 11,
+    category: "Specific Relief Act",
+    question: "A plaintiff seeks to destroy a physical legal document or written instrument because they apprehend it will cause serious injury. Which section governs this Cancellation of Instruments?",
+    options: ["Section 35", "Section 38", "Section 39", "Section 44"],
+    answer: "Section 39",
+    explanation: "Section 39 of the Specific Relief Act 1877 regulates the cancellation of void or voidable written instruments by court decree."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Criminal Conspiracy",
-    text: "To establish the offense of Criminal Conspiracy under Section 120A, an agreement between two or more persons must be proven. When is an overt act strictly required to complete the offense?",
-    options: [
-      "An overt act is always required for all types of criminal conspiracies.",
-      "No overt act is required if the agreement itself is to commit a distinct criminal offense.",
-      "An overt act is only required if the conspiracy involves public servants or political figures.",
-      "An overt act is required only when the agreement is to commit an offense punishable with death."
-    ],
-    correct: 1,
-    explanation: "Under Section 120A, no overt act is necessary if the agreement is to commit an offense. However, if the agreement is to perform an act that is legal but by illegal means, or an act that is not an offense, an overt act must be done by one or more parties to the agreement to complete the conspiracy."
+    id: 12,
+    category: "Specific Relief Act",
+    question: "Any person entitled to any legal character or to any right as to any property may institute a suit for a declaration of status under which section?",
+    options: ["Section 9", "Section 39", "Section 42", "Section 54"],
+    answer: "Section 42",
+    explanation: "Section 42 of the Specific Relief Act 1877 controls declaratory suits where a plaintiff seeks a court judgment regarding their legal character or right to property."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Offenses Against the State",
-    text: "Which section of the Penal Code 1860 deals with Sedition, defining it as bringing or attempting to bring into hatred or contempt towards the Government established by law?",
-    options: [
-      "Section 121",
-      "Section 121A",
-      "Section 124A",
-      "Section 153A"
-    ],
-    correct: 2,
-    explanation: "Section 124A explicitly defines Sedition. It penalizes anyone who, by words (spoken or written), signs, or visible representation, brings or attempts to bring into hatred or contempt, or excites disaffection towards the Government established by law."
+    id: 13,
+    category: "Specific Relief Act",
+    question: "What is the mandatory condition under Section 42 of the Specific Relief Act 1877 that prevents a court from granting a pure declaration?",
+    options: ["Where the plaintiff is able to seek further relief than a mere declaration but omits to do so", "Where the defendant is the Government", "Where the valuation is under 50,000 Taka", "Where the contract is oral"],
+    answer: "Where the plaintiff is able to seek further relief than a mere declaration but omits to do so",
+    explanation: "The proviso to Section 42 clearly states that no court shall make a declaration where the plaintiff, being able to seek further consequential relief, omits to do so."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Unlawful Assembly",
-    text: "What is the minimum number of persons required to constitute an 'Unlawful Assembly' under Section 141 of the Penal Code 1860?",
-    options: [
-      "Two persons",
-      "Three persons",
-      "Five persons",
-      "Ten persons"
-    ],
-    correct: 2,
-    explanation: "Section 141 states that an assembly of five or more persons is designated as an unlawful assembly if the common object of the persons composing that assembly matches any of the five clauses enumerated within that section."
+    id: 14,
+    category: "Specific Relief Act",
+    question: "According to the Specific Relief Act 1877, a Temporary Injunction is explicitly regulated by which legal architecture?",
+    options: ["Section 53 of the Specific Relief Act exclusively", "The Code of Civil Procedure 1908", "The Limitation Act 1908", "Section 55 of the Specific Relief Act exclusively"],
+    answer: "The Code of Civil Procedure 1908",
+    explanation: "Section 53 of the Specific Relief Act 1877 establishes that temporary injunctions are regular interlocutory reliefs governed by the Code of Civil Procedure (Order 39)."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Rioting & Affray",
-    text: "Whenever force or violence is used by an unlawful assembly, or by any member thereof, in prosecution of the common object of such assembly, every member is guilty of which distinct offense?",
-    options: [
-      "Affray under Section 159",
-      "Rioting under Section 146",
-      "Dacoity under Section 391",
-      "Assault under Section 351"
-    ],
-    correct: 1,
-    explanation: "Section 146 defines Rioting as the use of force or violence by an unlawful assembly or any member of it in prosecution of their common object. The punishment for rioting is prescribed under Section 147."
+    id: 15,
+    category: "Specific Relief Act",
+    question: "A Perpetual Injunction can only be granted under Section 54 of the Specific Relief Act 1877 through:",
+    options: ["An ex-parte dynamic order", "An affidavit at the initial filing stage", "A final decree made at the hearing upon the merits of the suit", "An interlocutory application filed during the trial"],
+    answer: "A final decree made at the hearing upon the merits of the suit",
+    explanation: "Section 54 states that a perpetual injunction is granted by a final decree made at the hearing upon the merits of the suit, permanently restraining the defendant."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Rioting & Affray",
-    text: "Two individuals get into a sudden loud fistfight inside a crowded railway station platform, disrupting public peace and causing panic. What specific offense have they committed?",
-    options: [
-      "Rioting under Section 146",
-      "Affray under Section 159",
-      "Assault under Section 351",
-      "Criminal Force under Section 349"
-    ],
-    correct: 1,
-    explanation: "Under Section 159, when two or more persons, by fighting in a public place, disturb the public peace, they are said to commit an 'affray'. Key requirements are: two or more persons, fighting, in a public place, disrupting public peace."
+    id: 16,
+    category: "Specific Relief Act",
+    question: "To prevent the breach of an obligation, it is necessary to compel the performance of certain acts which the court is capable of enforcing. The court may grant a:",
+    options: ["Temporary Injunction", "Perpetual Injunction", "Mandatory Injunction", "Prohibitory Injunction"],
+    answer: "Mandatory Injunction",
+    explanation: "Section 55 of the Specific Relief Act 1877 defines a Mandatory Injunction as one used to prevent the breach of an obligation by compelling performance of requisite acts."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Homicide",
-    text: "Section 299 defines Culpable Homicide. Which of the following elements distinguishes it as Culpable Homicide not amounting to Murder under the standard statutory definitions?",
-    options: [
-      "The act is committed with the intention of causing death under all conditions.",
-      "The act is committed with the intention of causing such bodily injury as is likely to cause death.",
-      "The act is committed with absolute knowledge that it must in all probability cause death.",
-      "The act is committed out of pre-planned personal malice against a state official."
-    ],
-    correct: 1,
-    explanation: "Section 299 sets the lower threshold of mental intent: causing death with the intention of causing bodily injury which is 'likely' to cause death. Section 300 raises this standard to injuries 'sufficient in the ordinary course of nature' to cause death, which constitutes murder."
+    id: 17,
+    category: "Specific Relief Act",
+    question: "Under Section 56 of the Specific Relief Act 1877, an injunction CANNOT be granted to:",
+    options: ["Stay judicial proceedings pending at the institution of the suit, unless to prevent multiplicity", "Restrain any person from applying to any legislative body", "Interfere with the public duties of any department of the Government", "All of the above"],
+    answer: "All of the above",
+    explanation: "Section 56 lists explicit statutory bars where an injunction cannot be granted, including staying judicial proceedings, restraining legislative applications, or interfering with sovereign government departments."
+  },
+
+  // =========================================================
+  // BATCH: 15 CONTRACT ACT 1872 MCQS
+  // =========================================================
+  {
+    id: 18,
+    category: "Contract Act",
+    question: "According to Section 2(g) of the Contract Act 1872, an agreement not enforceable by law is explicitly defined as:",
+    options: ["Voidable Contract", "Void Agreement", "Illegal Agreement", "Contingent Contract"],
+    answer: "Void Agreement",
+    explanation: "Section 2(g) of the Contract Act 1872 states that an agreement not enforceable by law is said to be void (*void ab initio*)."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Murder",
-    text: "A intends to kill B. He tracks B down and shoots at him, but misses and accidentally hits and kills C, who was standing behind a pillar. Under what principle and section is A liable for C's death?",
-    options: [
-      "Culpable Homicide not amounting to murder under Section 299 due to accident.",
-      "Murder under Section 301 based on the doctrine of transfer of malice.",
-      "Negligent homicide under Section 304A due to reckless discharge of a firearm.",
-      "Grievous hurt causing death under Section 325."
-    ],
-    correct: 1,
-    explanation: "Section 301 embodies the doctrine of transferred malice (Culpable homicide by causing death of person other than person whose death was intended). It dictates that if a person causes the death of another while intending to kill someone else, the nature of the crime remains exactly the same as if he had killed the intended victim."
+    id: 19,
+    category: "Contract Act",
+    question: "An agreement which is enforceable by law at the option of one or more of the parties thereto, but not at the option of the other or others, is a:",
+    options: ["Void Agreement", "Voidable Contract", "Valid Contract", "Quasi-Contract"],
+    answer: "Voidable Contract",
+    explanation: "Section 2(i) of the Contract Act 1872 defines a voidable contract based on its operational dependency on the option of the aggrieved party."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Murder Exceptions",
-    text: "A finds his wife in an adulterous compromise with B inside his house. In a sudden explosion of passion and rage, A instantly picks up a nearby heavy iron rod and strikes B on the head, killing him on the spot. What offense has A committed?",
-    options: [
-      "Murder under Section 302 without any mitigating elements.",
-      "Culpable Homicide not amounting to murder under Section 300, Exception 1 (Grave and sudden provocation).",
-      "Rash and negligent act causing death under Section 304A.",
-      "Exempt from liability under the defense of absolute necessity under Section 81."
-    ],
-    correct: 1,
-    explanation: "Section 300 Exception 1 states that culpable homicide is not murder if the offender, whilst deprived of the power of self-control by grave and sudden provocation, causes the death of the person who gave the provocation. Discovering a spouse in flagrante delicto is a classic example of grave and sudden provocation."
+    id: 20,
+    category: "Contract Act",
+    question: "Under Section 10 of the Contract Act 1872, all agreements are valid contracts if they are built upon:",
+    options: ["Free consent of parties competent to contract", "Lawful consideration and a lawful object", "Not hereby expressly declared to be void", "All of the above"],
+    answer: "All of the above",
+    explanation: "Section 10 sets out the structural command for dynamic validity: competence, free consent, lawful consideration, lawful object, and absence of express statutory bars."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Negligence",
-    text: "A drives his motor vehicle at a speed of 100 km/h through a narrow, densely populated bazaar street, killing a pedestrian. There was no intent to kill or injure anyone. What is A's liability?",
-    options: [
-      "Murder under Section 302 due to implicit knowledge of imminent danger.",
-      "Causing death by negligence under Section 304A.",
-      "Simple Hurt under Section 323 because the impact was accidental.",
-      "No liability as it is classified as an unavoidable traffic accident."
-    ],
-    correct: 1,
-    explanation: "Section 304A addresses causing death by doing any rash or negligent act not amounting to culpable homicide. Running a vehicle recklessly fast through a crowded space without the specific intention to kill fits perfectly into criminal rashness and negligence under Section 304A."
+    id: 21,
+    category: "Contract Act",
+    question: "According to Section 11 of the Contract Act 1872, every person is competent to contract who is of the age of majority, and who is:",
+    options: ["Of sound mind, and not disqualified from contracting by any law", "Under legal guardianship", "An undischarged insolvent", "A minor with parent consent"],
+    answer: "Of sound mind, and not disqualified from contracting by any law",
+    explanation: "Section 11 explicitly mandates that competence requires the age of majority, soundness of mind, and no statutory legal disqualifications."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Hurt & Grievous Hurt",
-    text: "How many specific kinds of bodily injuries are designated as 'Grievous Hurt' under Section 320 of the Penal Code 1860?",
-    options: [
-      "Five kinds",
-      "Seven kinds",
-      "Eight kinds",
-      "Ten kinds"
-    ],
-    correct: 2,
-    explanation: "Section 320 explicitly list eight separate clauses that qualify as grievous hurt: emasculation, permanent privation of sight of either eye, permanent privation of hearing of either ear, privation of any member or joint, destruction/impairment of powers of any member/joint, permanent disfiguration of head/face, fracture/dislocation of bone/tooth, or any hurt causing severe bodily pain or inability to follow ordinary pursuits for 20 days."
+    id: 22,
+    category: "Contract Act",
+    question: "Consent is defined as free under Section 14 of the Contract Act 1872 when it is NOT caused by which of the following combinations?",
+    options: ["Coercion (Sec. 15) or Undue Influence (Sec. 16)", "Fraud (Sec. 17) or Misrepresentation (Sec. 18)", "Mistake (Sec. 20, 21 or 22)", "All of the above"],
+    answer: "All of the above",
+    explanation: "Section 14 states consent is free when it is completely untainted by coercion, undue influence, fraud, misrepresentation, or mistake."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Wrongful Restraint & Confinement",
-    text: "A obstructs a public footpath by placing a wire fence across it, intentionally preventing B from walking down a path where B has a legal right to pass. What offense has A committed?",
-    options: [
-      "Wrongful Confinement under Section 340",
-      "Wrongful Restraint under Section 339",
-      "Criminal Trespass under Section 441",
-      "Assault under Section 351"
-    ],
-    correct: 1,
-    explanation: "Under Section 339, whoever voluntarily obstructs any person so as to prevent that person from proceeding in any direction in which that person has a right to proceed, is said wrongfully to restrain that person. It is an obstruction in a particular direction."
+    id: 23,
+    category: "Contract Act",
+    question: "When consent to an agreement is caused by Coercion, Fraud, or Misrepresentation, the contract status under Section 19 is:",
+    options: ["Void *ab initio*", "Voidable at the option of the party whose consent was so caused", "Fully valid and unresolvable", "Illegal and penal in nature"],
+    answer: "Voidable at the option of the party whose consent was so caused",
+    explanation: "Section 19 provides that an agreement where consent is coerced or fraudulently induced is a contract voidable at the option of the aggrieved party."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Wrongful Restraint & Confinement",
-    text: "A locks B inside a windowless brick store room and guards the single exit door with weapons, completely preventing B from escaping in any direction. What offense has A committed?",
-    options: [
-      "Wrongful Restraint under Section 339",
-      "Wrongful Confinement under Section 340",
-      "Kidnapping under Section 359",
-      "Extortion under Section 383"
-    ],
-    correct: 1,
-    explanation: "Section 340 defines Wrongful Confinement as wrongfully restraining a person in such a manner as to prevent that person from proceeding beyond certain circumscribing limits. It is a total restraint of personal liberty in all directions."
+    id: 24,
+    category: "Contract Act",
+    question: "Under Section 20 of the Contract Act 1872, where both the parties to an agreement are under a mistake as to a matter of fact essential to the agreement, the agreement is:",
+    options: ["Valid", "Voidable", "Void", "Unenforceable"],
+    answer: "Void",
+    explanation: "Section 20 rules that a mutual or bilateral mistake of an essential fact completely neutralizes the agreement, rendering it void."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Kidnapping & Abduction",
-    text: "Under the Penal Code 1860, kidnapping from lawful guardianship (Section 361) can occur only in respect of a male minor under ____ years of age and a female minor under ____ years of age.",
-    options: [
-      "14 years; 16 years",
-      "16 years; 18 years",
-      "18 years; 21 years",
-      "14 years; 18 years"
-    ],
-    correct: 0,
-    explanation: "Section 361 provides that whoever takes or entices any minor under 14 years of age if a male, or under 16 years of age if a female, out of the keeping of the lawful guardian without consent, commits kidnapping from lawful guardianship."
+    id: 25,
+    category: "Contract Act",
+    question: "According to Section 23 of the Contract Act 1872, the consideration or object of an agreement is lawful unless:",
+    options: ["It is forbidden by law or is fraudulent", "It involves or implies injury to the person or property of another", "The Court regards it as immoral, or opposed to public policy", "All of the above"],
+    answer: "All of the above",
+    explanation: "Section 23 establishes that any consideration or object that is illegal, fraudulent, injurious, or opposed to public policy is unlawful and renders the agreement void."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Kidnapping & Abduction",
-    text: "What is the primary conceptual distinction between 'Kidnapping' (Section 359) and 'Abduction' (Section 362) under the Penal Code?",
-    options: [
-      "Kidnapping requires an economic ransom demand, whereas abduction is purely political.",
-      "Kidnapping is committed only against minors/unsound persons, while abduction applies to any person forced/induced by deceit.",
-      "Abduction is a continuous offense requiring physical harm, whereas kidnapping is completed instantly without movement.",
-      "Kidnapping is a bailable offense, whereas abduction is non-bailable under all schedules."
-    ],
-    correct: 1,
-    explanation: "Kidnapping (Section 360, 361) centers heavily on age limits (minors) or unsound mind, and does not require force or fraud—mere taking without guardian consent suffices. Abduction (Section 362) requires compelling by force or inducing by deceitful means, and can apply to a person of any age."
+    id: 26,
+    category: "Contract Act",
+    question: "Section 25 of the Contract Act 1872 establishes that an agreement made without consideration is void, UNLESS it is:",
+    options: ["Expressed in writing, registered, and made on account of natural love and affection", "A promise to compensate someone who voluntarily did something for the promisor", "A written promise to pay a debt barred by the law of limitation", "Any of the above"],
+    answer: "Any of the above",
+    explanation: "Section 25 outlines the three classic exceptions where an agreement without consideration remains a valid, binding contract."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Theft",
-    text: "A cuts down a valuable teak tree on B's ground without B's consent, with the intention of dishonestly taking the timber away. The tree falls, but A leaves it behind on the ground because he hears people approaching. Has A committed theft?",
-    options: [
-      "No, because the timber was never moved away from B's estate land.",
-      "Yes, the offense of theft is completed under Section 378 as soon as the object is severed from the earth to move it.",
-      "A has only committed an attempt to commit theft under Section 511.",
-      "A has committed criminal mischief but not theft."
-    ],
-    correct: 1,
-    explanation: "According to Section 378, Explanation 1 and 2, a thing attached to the earth is not the subject of theft until severed. But as soon as it is severed, it becomes capable of theft, and the act of severing it constitutes moving. Thus, theft was completed the moment the tree hit the ground."
+    id: 27,
+    category: "Contract Act",
+    question: "An agreement by which anyone is restrained from exercising a lawful profession, trade, or business of any kind is under Section 27:",
+    options: ["Void to that extent", "Voidable by the employee", "Fully enforceable everywhere", "Illegal under criminal law"],
+    answer: "Void to that extent",
+    explanation: "Section 27 states that every agreement by which anyone is restrained from exercising a lawful profession, trade, or business is to that extent void."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Extortion",
-    text: "A threatens B that he will publish a highly defamatory and scandalous article against B's family in a newspaper unless B delivers fifty thousand Taka to him immediately. B pays the amount. What offense has A committed?",
-    options: [
-      "Cheating under Section 415",
-      "Extortion under Section 383",
-      "Robbery under Section 390",
-      "Criminal Misappropriation under Section 403"
-    ],
-    correct: 1,
-    explanation: "Section 383 defines Extortion as intentionally putting a person in fear of any injury to that person or to any other, and thereby dishonestly inducing that person to deliver any property. Threatening reputation falls under this scope, and the delivery of property completes extortion."
+    id: 28,
+    category: "Contract Act",
+    question: "A contract to do or not to do something, if some event, collateral to such contract, does or does not happen, defines a:",
+    options: ["Quasi-Contract", "Contingent Contract", "Wandering Agreement", "Voidable Promise"],
+    answer: "Contingent Contract",
+    explanation: "Section 31 of the Contract Act 1872 explicitly defines a contingent contract based on conditional performance linked to an uncertain collateral event."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Robbery & Dacoity",
-    text: "When does the offense of Theft or Extortion graduate into the offense of 'Robbery' under Section 390 of the Penal Code 1860?",
-    options: [
-      "When the value of the property taken exceeds one lakh Taka.",
-      "When the offender causes or attempts to cause death, hurt, or wrongful restraint, or fear of instant death/hurt/restraint to complete the act.",
-      "When the offense is committed by a group containing more than three professional thieves.",
-      "When the property stolen belongs directly to the State or a banking institution."
-    ],
-    correct: 1,
-    explanation: "Section 390 states that theft is robbery if, in committing it or carrying away the property, the offender voluntarily causes or attempts to cause death, hurt, or wrongful restraint, or fear of instant death, instant hurt, or instant wrongful restraint."
+    id: 29,
+    category: "Contract Act",
+    question: "If a person incapable of entering into a contract is supplied by another person with necessaries suited to their condition in life, the supplier under Section 68 is entitled to:",
+    options: ["Arrest the incapable person", "Reimbursement from the property of such incapable person", "No dynamic remedy since the contract is void", "Personal recovery from the guardian exclusively"],
+    answer: "Reimbursement from the property of such incapable person",
+    explanation: "Section 68 (Quasi-Contract) allows reimbursement from the property of the incompetent person for the supply of essential necessaries."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Robbery & Dacoity",
-    text: "What is the minimum number of co-offenders required acting together to classify a robbery as a 'Dacoity' under Section 391?",
-    options: [
-      "Two persons",
-      "Five persons",
-      "Five or more persons",
-      "Ten or more persons"
-    ],
-    correct: 2,
-    explanation: "Section 391 explicitly defines Dacoity: 'When five or more persons conjointly commit or attempt to commit a robbery... every person so committing, attempting or aiding, is said to commit dacoity.' Five is the statutory minimum."
+    id: 30,
+    category: "Contract Act",
+    question: "A person who finds goods belonging to another, and takes them into his custody, is subject to the same responsibility as a:",
+    options: ["Pawnee", "Bailee", "Owner", "Agent"],
+    answer: "Bailee",
+    explanation: "Section 71 of the Contract Act 1872 imposes the strict legal duties of a bailee upon any finder of lost goods."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Criminal Breach of Trust",
-    text: "A traveling agent is entrusted by his corporate employer with a collection of high-value electronic samples to showcase to clients. Instead of displaying them, A pawns the items to clear his personal gambling debts. What offense has A committed?",
-    options: [
-      "Theft under Section 378",
-      "Criminal Misappropriation under Section 403",
-      "Criminal Breach of Trust under Section 405",
-      "Cheating under Section 415"
-    ],
-    correct: 2,
-    explanation: "Section 405 defines Criminal Breach of Trust. The foundational element is that the property must be 'entrusted' to the person. Once entrusted, if they dishonestly misappropriate or convert it to their own use, it constitutes CBT rather than simple theft or misappropriation."
+    id: 31,
+    category: "Contract Act",
+    question: "When a contract has been broken, the party who suffers by such breach is entitled to receive compensation for loss under Section 73 which:",
+    options: ["Naturally arose in the usual course of things from such breach", "Includes remote and indirect losses sustained", "Acts as exemplary or punitive damages to teach a lesson", "Is calculated at double the contract price"],
+    answer: "Naturally arose in the usual course of things from such breach",
+    explanation: "Section 73 permits the recovery of damages that naturally arise in the usual course of things or were within human contemplation, excluding remote losses."
   },
   {
-    act: "Penal Code 1860",
-    subject: "Cheating",
-    text: "A intentionally deceives B by falsely pretending to be a senior civil servant from the Ministry of Finance, thereby inducing B to sign over a contract lease for a land plot. What specific form of cheating has A committed?",
-    options: [
-      "Simple Cheating under Section 415",
-      "Cheating by Personation under Section 416",
-      "Forgery under Section 463",
-      "Extortion under Section 383"
-    ],
-    correct: 1,
-    explanation: "Section 416 states that a person is said to 'cheat by personation' if he cheats by pretending to be some other person, or by knowingly substituting one person for another, or representing that he or any other person is a person other than he or such other person really is. Punishable under Section 419."
-  },
-  {
-    act: "Penal Code 1860",
-    subject: "Criminal Trespass",
-    text: "A enters B's private residential compound courtyard at 2:00 AM without permission, carrying spray paint to deface B's primary vehicles out of spite. What offense has A committed?",
-    options: [
-      "Simple Criminal Trespass under Section 441",
-      "House-Trespass under Section 442",
-      "House-breaking under Section 445",
-      "Lurking House-trespass by night under Section 444"
-    ],
-    correct: 1,
-    explanation: "Section 442 defines House-trespass as committing criminal trespass by entering into or remaining in any building, tent or vessel used as a human dwelling. A private residential compound yard directly connected to a dwelling house satisfies the threshold for house-trespass. (Note: House-breaking requires entering via one of the six specific structural methods outlined in Section 445)."
+    id: 32,
+    category: "Contract Act",
+    question: "Under Section 74 of the Contract Act 1872, if a sum is named in the contract as the amount to be paid in case of breach:",
+    options: ["The court always awards that exact sum as a mandatory penalty", "The plaintiff receives nothing if no actual loss is verified", "The party complaining of the breach is entitled to receive reasonable compensation not exceeding the amount so named", "English common law penalty distinctions apply fully"],
+    answer: "The party complaining of the breach is entitled to receive reasonable compensation not exceeding the amount so named",
+    explanation: "Section 74 eliminates the common law distinction between liquidated damages and penalties; it treats the named sum as an absolute maximum ceiling for reasonable compensation."
   }
 ];
-
-// Core state elements
-let currentQuestionIndex = 0;
-let score = 0;
-let userAnswers = []; // records indices of user selections
-
-function renderQuestion() {
-  const container = document.getElementById('quiz-container');
-  if (currentQuestionIndex >= questions.length) {
-    renderScore();
-    return;
-  }
-
-  // Update programmatic progress bar element 
-  const progressPercent = (currentQuestionIndex / questions.length) * 100;
-  document.getElementById('quiz-progress').style.width = progressPercent + '%';
-
-  const q = questions[currentQuestionIndex];
-  
-  let html = `
-    <div class="qq">
-      <div class="qqn">Question ${currentQuestionIndex + 1} of ${questions.length}</div>
-      <div class="qqs">${q.subject}</div>
-      <div class="qqt">${q.text}</div>
-      <div class="qo">
-  `;
-
-  q.options.forEach((opt, idx) => {
-    const letter = String.fromCharCode(65 + idx); // A, B, C, D
-    html += `
-      <div class="qopt" id="opt-${idx}" onclick="selectOption(${idx})">
-        <span class="qol">${letter}.</span>
-        <span>${opt}</span>
-      </div>
-    `;
-  });
-
-  html += `
-      </div>
-      <div class="qexp" id="explanation-box">
-        <strong>Explanation (Statutory Citation Focus):</strong><br>
-        ${q.explanation}
-      </div>
-      <div style="margin-top: 18px; display: flex; gap: 10px;">
-        <button class="btn bp" id="next-btn" onclick="nextQuestion()" style="display:none;">Next Question ➔</button>
-      </div>
-    </div>
-  `;
-  
-  container.innerHTML = html;
-}
-
-function selectOption(selectedIdx) {
-  const q = questions[currentQuestionIndex];
-  
-  // Prevent duplicate clicks changing evaluations
-  if (userAnswers[currentQuestionIndex] !== undefined) return;
-  
-  userAnswers[currentQuestionIndex] = selectedIdx;
-  
-  // Highlight correctness status
-  q.options.forEach((_, idx) => {
-    const optDiv = document.getElementById(`opt-${idx}`);
-    if (idx === q.correct) {
-      optDiv.classList.add('correct');
-    } else if (idx === selectedIdx) {
-      optDiv.classList.add('wrong');
-    }
-  });
-
-  if (selectedIdx === q.correct) {
-    score++;
-  }
-
-  // Display explicit detailed logic container
-  document.getElementById('explanation-box').classList.add('show');
-  document.getElementById('next-btn').style.display = 'inline-flex';
-}
-
-function nextQuestion() {
-  currentQuestionIndex++;
-  renderQuestion();
-}
-
-function resetQuiz() {
-  currentQuestionIndex = 0;
-  score = 0;
-  userAnswers = [];
-  renderQuestion();
-}
-
-function renderScore() {
-  document.getElementById('quiz-progress').style.width = '100%';
-  const container = document.getElementById('quiz-container');
-  
-  const percentage = Math.round((score / questions.length) * 100);
-  let statusTier = "Keep Studying!";
-  let tint = "var(--accent)";
-  
-  if(percentage >= 85) { statusTier = "Excellent! Highly Competitive Edge"; tint = "var(--green)"; }
-  else if(percentage >= 65) { statusTier = "Good Baseline. Review Citation Explanations"; tint = "var(--gold)"; }
-
-  container.innerHTML = `
-    <div class="qscore">
-      <div class="pe" style="color:${tint}">${statusTier}</div>
-      <div class="pt">Assessment Completed</div>
-      <div class="qsn" style="color:${tint}">${score} / ${questions.length}</div>
-      <p class="pr" style="margin-bottom: 20px;">You answered <strong>${percentage}%</strong> of the high-yield BJS Penal Code questions correctly.</p>
-      <button class="btn bp" onclick="resetQuiz()">🔄 Restart Assessment</button>
-    </div>
-  `;
-}
-
-// Initial auto-bootstrapping call execution
-window.onload = function() {
-  // Application layout is primed for routing interaction.
-};
 </script>
-</body>
-</html>
