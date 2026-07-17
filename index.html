@@ -1,773 +1,238 @@
-<!-- Main Application Wrapper -->
-<div class="app-container" style="display: flex; min-height: 100vh;">
-  
-  <!-- UPDATED SIDEBAR NAVIGATION WITH ALL LINKS -->
-  <aside class="sidebar" style="width: 260px; border-right: 1px solid #ddd; padding: 20px;">
-    <div class="sidebar-brand" style="font-weight: bold; margin-bottom: 20px;">Law Academy</div>
-    <nav class="sidebar-nav">
-      <ul style="list-style: none; padding: 0; margin: 0;">
-        <li style="margin-bottom: 12px;">
-          <a href="#constitution" class="nav-link" style="text-decoration: none; color: inherit;">🏛️ Constitution</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#cpc" class="nav-link" style="text-decoration: none; color: inherit;">📘 CPC, 1908</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#sra" class="nav-link" style="text-decoration: none; color: inherit;">⚖️ Specific Relief Act, 1877</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#contract-act" class="nav-link" style="text-decoration: none; color: inherit;">📜 Contract Act, 1872</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#limitation-act" class="nav-link" style="text-decoration: none; color: inherit;">⏳ Limitation Act, 1908</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#crpc" class="nav-link" style="text-decoration: none; color: inherit;">📖 CrPC, 1898</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#landmark-cases" class="nav-link" style="text-decoration: none; color: inherit;">⚖️ Landmark Cases</a>
-        </li>
-        <li style="margin-bottom: 12px;">
-          <a href="#evidence-act" class="nav-link active" style="text-decoration: none; color: inherit; font-weight: bold;">📜 Evidence Act, 1872</a>
-        </li>
-      </ul>
-    </nav>
-  </aside>
-
-  <!-- MAIN CONTENT WINDOW -->
-  <main class="content-window" style="flex: 1; padding: 40px;">
-
-    <!-- ========================================================= -->
-    <!-- SECTION: CONSTITUTION OF BANGLADESH VIEW                  -->
-    <!-- ========================================================= -->
-    <div class="page" id="constitution" style="margin-top: 60px; display: none;">
-      <div class="ph">
-        <div class="pe">Supreme Law of the Republic</div>
-        <div class="pt">The Constitution of Bangladesh</div>
-        <div class="ps">The foundational legal framework specifying the structure of governance, checks and balances, and guaranteed fundamental human rights.</div>
-      </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- SECTION: CODE OF CIVIL PROCEDURE (CPC), 1908 VIEW     -->
-    <!-- ========================================================= -->
-    <div class="page" id="cpc" style="margin-top: 60px; display: none;">
-      <div class="ph">
-        <div class="pe">Procedural Law</div>
-        <div class="pt">Code of Civil Procedure, 1908</div>
-        <div class="ps">The procedural backbone governing the administration, trial stages, and enforcement of decrees in civil disputes in Bangladesh.</div>
-      </div>
-
-      <!-- SECTION 1: RES JUDICATA VS RES SUB-JUDICE -->
-      <h2 class="ph2 bl">1. Res Judicata vs. Res Sub-Judice</h2>
-      <p class="pr">These two pillars ensure the finality of litigation and prevent a single cause of action from creating concurrent conflicting decisions or infinite trials between identical parties.</p>
-
-      <table class="ct">
-        <thead>
-          <tr>
-            <th>Legal Parameter</th>
-            <th>Res Sub-Judice (Section 10)</th>
-            <th>Res Judicata (Section 11)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Core Meaning</strong></td>
-            <td>A matter currently pending active trial in a competent court.</td>
-            <td>A matter that has already been conclusively decided by a competent court.</td>
-          </tr>
-          <tr>
-            <td><strong>Court's Action</strong></td>
-            <td>The court **stays the trial** of any subsequent suit until the first matter finishes.</td>
-            <td>The court **completely bars the institution** or trial of the subsequent suit out of hand.</td>
-          </tr>
-          <tr>
-            <td><strong>Prerequisites</strong></td>
-            <td>Two suits filed concurrently; the matter in issue must be directly and substantially identical in both.</td>
-            <td>A previously decided suit exists; the matter was directly and substantially heard and finally decided.</td>
-          </tr>
-          <tr>
-            <td><strong>Objective</strong></td>
-            <td>To prevent courts of concurrent jurisdiction from rendering conflicting decisions on the same right.</td>
-            <td>To enforce the maxims of finality and prevent a defendant from being vexed twice for the same cause.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- SECTION 2: TEMPORARY INJUNCTIONS -->
-      <h2 class="ph2 gr">2. Temporary Injunctions: Order 39 (Rules 1-2)</h2>
-      <p class="pr">Temporary injunctions are an equitable relief mechanism intended to preserve the exact physical status quo of a disputed property pending the final disposal of the suit.</p>
-
-      <div class="wb">
-        <strong>The Golden Tripartite Test:</strong> To secure protection under Order 39, the plaintiff must prove:
-        1. <em>Prima Facie Case:</em> A bonafide, triable issue exists.
-        2. <em>Irreparable Loss:</em> Injury that cannot be adequately compensated by financial damages.
-        3. <em>Balance of Inconvenience:</em> Greater hardship will fall on the plaintiff if the injunction is refused than on the defendant if granted.
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">Order 39 R 1</span>
-          <span class="stx"><strong>Cases Where Temporary Injunction May Be Granted</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">Granted where it is proved by affidavit or otherwise that any property in dispute in a suit is in danger of being wasted, damaged, or alienated by any party, or wrongfully sold in execution of a decree, or where the defendant threatens to remove or dispose of their property to defraud creditors.</p>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">Order 39 R 2</span>
-          <span class="stx"><strong>Injunction to Restrain Breach of Contract or Injury</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">In any suit for restraining the defendant from committing a breach of contract or other injury, the plaintiff may apply for a temporary injunction to restrain the defendant from committing the breach or injury complained of, or any breach of contract or injury of a like kind arising out of the same contract.</p>
-        </div>
-      </div>
-
-      <!-- SECTION 3: REJECTION VS RETURN OF PLAINT -->
-      <h2 class="ph2 gd">3. Rejection of Plaint (O. 7 R. 11) vs. Return of Plaint (O. 7 R. 10)</h2>
-      <p class="pr">When a plaint suffers from structural defects, the Code provides distinct pathways based on whether the defect is a fatal legal bar or a simple choice of the wrong forum.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">O. 7 R. 11</span>
-          <span class="stx"><strong>Rejection of Plaint (Fatal Faults)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">The court **must reject** the plaint under four explicit statutory conditions:</p>
-          <ul class="el">
-            <li><span class="en">A</span> <div>Where it does not disclose a clear cause of action.</div></li>
-            <li><span class="en">B</span> <div>Where the relief claimed is undervalued, and the plaintiff fails to correct it within the time fixed by the court.</div></li>
-            <li><span class="en">C</span> <div>Where the relief is properly valued but written on insufficiently stamped paper, and the default is not cured.</div></li>
-            <li><span class="en">D</span> <div>Where the suit appears from the statement in the plaint to be completely barred by any law.</div></li>
-          </ul>
-          <div class="em"><strong>Crucial Decree Impact:</strong> A rejection of a plaint under Order 7 Rule 11 is deemed a "Decree" under Section 2(2) CPC. Therefore, it is appealable and does not bar the filing of a fresh plaint on the same cause of action.</div>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">O. 7 R. 10</span>
-          <span class="stx"><strong>Return of Plaint (Wrong Forum)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">The plaint is returned at any stage of the suit to be presented to the proper Court in which the suit should have been instituted. This occurs exclusively due to a lack of pecuniary, territorial, or subject-matter jurisdiction. The suit is not killed; it is simply redirected to the correct court.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- NEWLY BUILT SECTION: SPECIFIC RELIEF ACT, 1877 VIEW        -->
-    <!-- ========================================================= -->
-    <div class="page" id="sra" style="margin-top: 60px; display: none;">
-      <div class="ph">
-        <div class="pe">Substantive Equity Law</div>
-        <div class="pt">The Specific Relief Act, 1877</div>
-        <div class="ps">Statutory framework providing tailored, equitable remedies such as recovery of possession, specific performance, rescission, cancellation, and injunctions.</div>
-      </div>
-
-      <!-- SECTION 1: RECOVERY OF POSSESSION -->
-      <h2 class="ph2 bl">1. Recovery of Possession: Section 8 vs. Section 9</h2>
-      <p class="pr">The Act provides two distinct civil options for individuals seeking recovery of immovable property depending on title strength and the urgency of the dispossession.</p>
-
-      <table class="ct">
-        <thead>
-          <tr>
-            <th>Parameter</th>
-            <th>Section 8 (Title-Based)</th>
-            <th>Section 9 (Possession-Based Summary Suit)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Core Foundation</strong></td>
-            <td>Based entirely on regular legal ownership or title.</td>
-            <td>Based strictly on previous peaceful possession; title is irrelevant.</td>
-          </tr>
-          <tr>
-            <td><strong>Limitation Period</strong></td>
-            <td>**12 Years** under Article 142 or 144 of the Limitation Act.</td>
-            <td>**6 Months** from the exact date of dispossession.</td>
-          </tr>
-          <tr>
-            <td><strong>Requirement</strong></td>
-            <td>Plaintiff must prove dynamic ownership and superior title.</td>
-            <td>Must prove sudden, dispossession without consent and outside due process of law.</td>
-          </tr>
-          <tr>
-            <td><strong>Remedy Against State</strong></td>
-            <td>A regular suit under Section 8 **can** be filed against the Government.</td>
-            <td>Section 9 explicitly states **no suit can be brought** against the Government.</td>
-          </tr>
-          <tr>
-            <td><strong>Appeal / Review Rules</strong></td>
-            <td>Regular decree layout: **Appeals and Reviews are allowed**.</td>
-            <td>**No Appeal or Review lies** from any order or decree passed under Section 9. Revision is allowed.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- SECTION 2: SPECIFIC PERFORMANCE OF CONTRACTS -->
-      <h2 class="ph2 gr">2. Specific Performance: Section 12 vs. Section 21</h2>
-      <p class="pr">Courts balance equity to decide when a party must complete a physical contract versus when financial damages provide a complete, adequate alternative.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">Section 12</span>
-          <span class="stx"><strong>Contracts Which Can Be Specifically Enforced</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">Specific performance may be granted at judicial discretion under the following conditions:</p>
-          <ul class="el">
-            <li><span class="en">A</span> <div>When the act agreed to be done is in the performance, wholly or partly, of a trust.</div></li>
-            <li><span class="en">B</span> <div>When there exists no standard for ascertaining the actual damage caused by the non-performance of the act.</div></li>
-            <li><span class="en">C</span> <div>When the act is such that pecuniary compensation would not afford adequate relief (e.g., transfers of unique immovable property).</div></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">Section 21</span>
-          <span class="stx"><strong>Contracts Which Cannot Be Specifically Enforced</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">The court cannot command performance for the following statutory exclusions:</p>
-          <ul class="el">
-            <li><span class="en">1</span> <div>A contract where monetary compensation is an adequate relief option.</div></li>
-            <li><span class="en">2</span> <div>Contracts running into minute or numerous details, or dependent on personal qualifications/volition (e.g., marriage, personal services).</div></li>
-            <li><span class="en">3</span> <div>Contracts which are by nature highly determinable (can be terminated at will by either party).</div></li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECTION 3: RESCISSION VS CANCELLATION -->
-      <h2 class="ph2 gd">3. Rescission of Contracts (Sec. 35) vs. Cancellation of Instruments (Sec. 39)</h2>
-      <p class="pr">These remedies dissolve dynamic obligations or destroy physical legal documents to prevent future fraud or injustice.</p>
-
-      <div class="wb">
-        <strong>Section 35 (Rescission of Contracts):</strong> Any person interested in a contract may sue to have it rescinded if the contract is voidable or terminable by the plaintiff, or if the contract is unlawful for causes not apparent on its face and the defendant is more to blame.
-      </div>
-
-      <div class="wb">
-        <strong>Section 39 (Cancellation of Instruments):</strong> Any person against whom a written instrument is void or voidable, and who has reasonable apprehension that such instrument, if left outstanding, may cause them serious injury, may sue to have it adjudged void or voidable and ordered to be delivered up and cancelled.
-      </div>
-
-      <!-- SECTION 4: TYPES OF INJUNCTIONS -->
-      <h2 class="ph2 bl">4. Types of Injunctions: Perpetual (Sec. 54) vs. Mandatory (Sec. 55)</h2>
-      <p class="pr">Preventive relief is granted through injunctions that either restrain a wrongful act or compel the performance of a necessary task.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 54</span>
-          <span class="stx"><strong>Perpetual Injunctions (Preventive Restraint)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">A perpetual injunction can only be granted by a final decree made at the hearing upon the merits of the suit. It permanently enjoys the defendant from asserting a right or committing an act which would be contrary to the rights of the plaintiff. It is triggered when the defendant invades or threatens to invade the plaintiff's right to, or enjoyment of, property.</p>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 55</span>
-          <span class="stx"><strong>Mandatory Injunctions (Compelled Performance)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">When, to prevent the breach of an obligation, it is necessary to compel the performance of certain acts which the Court is capable of enforcing, the Court may in its discretion grant an injunction to prevent the breach complained of, and also to compel performance of the requisite acts (e.g., ordering the demolition of a wall built illegally blocking easement rights).</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- NEWLY BUILT SECTION: THE CONTRACT ACT, 1872 VIEW          -->
-    <!-- ========================================================= -->
-    <div class="page" id="contract-act" style="margin-top: 60px; display: none;">
-      <div class="ph">
-        <div class="pe">Substantive Commercial Law</div>
-        <div class="pt">The Contract Act, 1872</div>
-        <div class="ps">The legal architecture establishing how agreements are structured, validated, performed, breached, and compensated.</div>
-      </div>
-
-      <!-- SECTION 1: ESSENTIAL ELEMENTS -->
-      <h2 class="ph2 bl">1. Essential Elements of a Valid Contract: Section 10</h2>
-      <p class="pr">An agreement remains a non-binding promise unless it satisfies the core validity criteria explicitly set forth under Section 10 of the Act.</p>
-
-      <div class="wb">
-        <strong>Statutory Command:</strong> All agreements are contracts if they are made by the **free consent** of parties **competent to contract**, for a **lawful consideration** and with a **lawful object**, and are not hereby expressly declared to be void.
-      </div>
-
-      <ul class="el">
-        <li><span class="en">1</span> <div><strong>Competency (Section 11):</strong> Parties must be of the age of majority, of sound mind, and not disqualified by law.</div></li>
-        <li><span class="en">2</span> <div><strong>Free Consent (Section 14):</strong> Consent is free when it is not caused by Coercion (Sec. 15), Undue Influence (Sec. 16), Fraud (Sec. 17), Misrepresentation (Sec. 18), or Mistake (Sec. 20-22).</div></li>
-        <li><span class="en">3</span> <div><strong>Lawful Object &amp; Consideration (Section 23):</strong> Must not be fraudulent, cause injury to others, or be opposed to public policy.</div></li>
-      </ul>
-
-      <!-- SECTION 2: VOID VS VOIDABLE -->
-      <h2 class="ph2 gr">2. Structural Status: Void Agreements vs. Voidable Contracts</h2>
-      <p class="pr">The Act draws sharp technical distinctions between agreements that carry zero legal life from inception and those that remain conditional on a party's choice.</p>
-
-      <table class="ct">
-        <thead>
-          <tr>
-            <th>Parameter</th>
-            <th>Void Agreement: Section 2(g)</th>
-            <th>Voidable Contract: Section 2(i)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Statutory Definition</strong></td>
-            <td>An agreement not enforceable by law is said to be void.</td>
-            <td>An agreement enforceable by law at the option of one or more parties, but not at the option of the other.</td>
-          </tr>
-          <tr>
-            <td><strong>Legal Status</strong></td>
-            <td>*Void ab initio* — Dead from the very beginning. Holds no legal existence.</td>
-            <td>Valid and operational until explicitly repudiated by the aggrieved party.</td>
-          </tr>
-          <tr>
-            <td><strong>Primary Causes</strong></td>
-            <td>Incompetency of parties (minority), unlawful objects, or agreements in restraint of marriage/trade.</td>
-            <td>When consent to an agreement is obtained via coercion, undue influence, fraud, or misrepresentation.</td>
-          </tr>
-          <tr>
-            <td><strong>Restitution</strong></td>
-            <td>Any benefit received must be restored under Section 65.</td>
-            <td>If rescinded, benefits received must be returned to the other party under Section 64.</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <!-- SECTION 3: CONTINGENT VS QUASI CONTRACTS -->
-      <h2 class="ph2 gd">3. Special Modalities: Contingent Contracts vs. Quasi-Contracts</h2>
-      <p class="pr">Contracts can be anchored to uncertain future occurrences or constructed implicitly by equity to avoid unjust enrichment.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 31</span>
-          <span class="stx"><strong>Contingent Contracts (Conditional Obligations)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">A contingent contract is a contract to do or not to do something, if some event, collateral to such contract, does or does not happen. Performance depends completely on the arrival or failure of a third-party event (e.g., insurance contracts).</p>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 68-72</span>
-          <span class="stx"><strong>Quasi-Contracts (Relations Resembling Contracts)</strong></span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">These are obligations imposed by law even in the absence of a formal agreement, founded on the equitable principle that no individual should grow rich off another's loss:</p>
-          <ul class="el">
-            <li><strong>Section 68:</strong> Claim for necessaries supplied to a person incapable of contracting.</li>
-            <li><strong>Section 69:</strong> Reimbursement of a person paying money due by another, in the payment of which he is interested.</li>
-            <li><strong>Section 70:</strong> Obligation of a person enjoying the benefit of a non-gratuitous act.</li>
-            <li><strong>Section 71:</strong> Responsibility of a finder of goods to take care of them and locate the owner.</li>
-            <li><strong>Section 72:</strong> Liability of a person to whom money is paid or things delivered by mistake or under coercion.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- SECTION 4: BREACH AND LIQUIDATED DAMAGES -->
-      <h2 class="ph2 bl">4. Consequences of Breach of Contract: Section 73</h2>
-      <p class="pr">When a party breaks an obligation, the law steps in to calculate financial remedies aimed at shifting the financial burden back to the defaulting party.</p>
-
-      <div class="wb">
-        <strong>Section 73 (Compensation for Loss or Damage):</strong> When a contract has been broken, the party who suffers by such breach is entitled to receive from the party who has broken the contract, compensation for any loss or damage caused to him thereby, which **naturally arose in the usual course of things** from such breach, or which the parties knew, when they made the contract, to be likely to result from the breach.
-      </div>
-
-      <div class="em">
-        <strong>Liquidated Damages Framework:</strong> Unlike English Common Law, which draws a strict distinction between liquidated damages (genuine pre-estimates) and penalties (punitive sums), courts in Bangladesh applying Section 74 look at the named sum as the absolute maximum cap. The court will only award **reasonable compensation** up to, but not exceeding, the amount stipulated in the contract.
-      </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- THE LIMITATION ACT, 1908 VIEW                             -->
-    <!-- ========================================================= -->
-    <div class="page" id="limitation-act" style="margin-top: 60px; display: none;">
-      <div class="ph">
-        <div class="pe">Procedural &amp; Substantive Policy</div>
-        <div class="pt">The Limitation Act, 1908</div>
-        <div class="ps">Statutory rules regulating the time thresholds within which suits, appeals, and applications must be brought before judicial forums.</div>
-      </div>
-
-      <!-- SECTION 1: DISMISSAL UNDER SECTION 3 -->
-      <h2 class="ph2 bl">1. The Harsh Reality of Section 3: Absolute Mandatory Dismissal</h2>
-      <p class="pr">Section 3 stands as the unyielding gatekeeper of legal finality. It acts independently of whether the defense is explicitly raised by the opposing party.</p>
-
-      <div class="wb">
-        <strong>Statutory Command:</strong> Subject to the provisions contained in sections 4 to 25 inclusive, every suit instituted, appeal preferred, and application made after the period of limitation prescribed therefor by the first schedule **shall be dismissed**, although limitation has not been set up as a defense.
-      </div>
-
-      <div class="em">
-        <strong>Exam Strategy Warning:</strong> Section 3 leaves zero judicial discretion to equity. Even if a claim is morally flawless and true, if the clock has run out, the court holds no jurisdiction to hear it. It affects the remedy, not the underlying right.
-      </div>
-
-      <!-- SECTION 2: CONDONATION OF DELAY -->
-      <h2 class="ph2 gr">2. Condonation of Delay: Section 5</h2>
-      <p class="pr">Section 5 acts as an equitable valve, allowing extensions of time if the applicant satisfies the court that they had **sufficient cause** for not preferring the action within the statutory window.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">Scope</span>
-          <span class="stx">Where can Section 5 be applied?</span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">Applies strictly to **Appeals** and **Applications** (such as review, revision, or leave to appeal applications). The court may condone the delay if the appellant shows sufficient cause (e.g., severe illness, imprisonment, or a bona fide mistake of counsel).</p>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn g">The Exception Bar</span>
-          <span class="stx">Absolute Exclusion of Suits</span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st" style="color: #c0392b; font-weight: bold;">Section 5 does NOT apply to original Suits or execution proceedings under Order 21 CPC.</p>
-          <p class="st">If an original civil suit is delayed by even a single day beyond the First Schedule time-frame, Section 5 cannot be used to salvage it. The delay in original suits can only be offset by dynamic statutory exemptions like Legal Disability (Section 6) or Fraud (Section 18).</p>
-        </div>
-      </div>
-
-      <!-- SECTION 3: LEGAL DISABILITY & FRAUD -->
-      <h2 class="ph2 gd">3. Exceptions: Legal Disability (Sec. 6) &amp; Effect of Fraud (Sec. 18)</h2>
-      <p class="pr">The law pauses or resets the limitation clock when the plaintiff is structurally incapable of pursuing their legal remedy due to internal disability or external deception.</p>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 6</span>
-          <span class="stx"><strong>Legal Disability</strong> (Clock Extension)</span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">Where a person entitled to institute a suit or make an application for the execution of a decree is, at the time from which the period of limitation is to be reckoned, a **minor**, **insane**, or an **idiot**, they may institute the suit or make the application within the same period after the disability has ceased.</p>
-          <ul class="el">
-            <li>If a person is affected by two consecutive disabilities (e.g., minor and insane), the clock remains paused until both disabilities are fully lifted.</li>
-            <li>Does not apply to appeals or regular interlocutory applications.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="ls">
-        <div class="lsh" onclick="toggleSection(this)">
-          <span class="sn">Sec 18</span>
-          <span class="stx"><strong>Effect of Fraud</strong> (Resetting the Clock)</span>
-          <span class="sa">▶</span>
-        </div>
-        <div class="lsb">
-          <p class="st">Where a person having a right to institute a suit or make an application has been kept from knowledge of such right or title by means of fraud, or where any document necessary to establish such right has been fraudulently concealed, the limitation clock **restarts** only when the fraud first becomes known to the affected party.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- EVIDENCE ACT, 1872 VIEW (EXISTING)                         -->
-    <!-- ========================================================= -->
-    <div class="page" id="evidence-act">
-      <!-- ... Rest of your existing Evidence Act content ... -->
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- LANDMARK JUDGMENTS VIEW (EXISTING)                         -->
-    <!-- ========================================================= -->
-    <div class="page" id="landmark-cases" style="margin-top: 60px; display: none;">
-      <!-- ... Rest of your existing Landmark Cases content ... -->
-    </div>
-
-    <!-- ========================================================= -->
-    <!-- CODE OF CRIMINAL PROCEDURE (CrPC) VIEW (EXISTING)           -->
-    <!-- ========================================================= -->
-    <div class="page" id="crpc" style="margin-top: 60px; display: none;">
-      <!-- ... Rest of your existing CrPC content ... -->
-    </div>
-
-  </main>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BJS Law — Complete Study Reference</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
+:root{--ink:#1a1a2e;--ink2:#2d2d44;--ink3:#5a5a7a;--ink4:#9898b0;--paper:#fafaf7;--paper2:#f3f3ee;--paper3:#e8e8e0;--accent:#b8460f;--accent2:#d4622a;--accent-bg:#fdf1ec;--gold:#c8932a;--gold-bg:#fdf8ee;--green:#2a7a4a;--green-bg:#eef7f2;--blue:#1a5fa8;--blue-bg:#eef3fb;--purple:#6a2a8a;--purple-bg:#f5eefb;--serif:'Crimson Pro',Georgia,serif;--sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',monospace;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--paper);color:var(--ink);min-height:100vh;display:flex;flex-direction:column;}
+.topbar{background:var(--ink);color:#fff;padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,0.3);}
+.topbar-brand{font-family:var(--serif);font-size:20px;font-weight:600;}.topbar-brand span{color:#e8a87c;}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;}
+.layout{display:flex;flex:1;}
+.sidebar{width:285px;background:var(--ink2);color:#fff;position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;flex-shrink:0;transition:transform 0.3s;}
+.sidebar::-webkit-scrollbar{width:4px;}.sidebar::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:2px;}
+.ss{padding:14px 0 4px;}.ssl{font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);padding:0 18px 6px;}
+.ni{display:flex;align-items:center;gap:9px;padding:8px 18px;font-size:12.5px;color:rgba(255,255,255,0.72);cursor:pointer;border-left:3px solid transparent;transition:all .15s;user-select:none;}
+.ni:hover{background:rgba(255,255,255,0.06);color:#fff;}.ni.active{background:rgba(184,70,15,0.22);color:#e8a87c;border-left-color:var(--accent2);}
+.ni-icon{font-size:14px;width:17px;text-align:center;flex-shrink:0;}
+.nb{margin-left:auto;font-size:9px;background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:20px;color:rgba(255,255,255,0.4);}.ni.active .nb{background:rgba(184,70,15,0.3);color:#e8a87c;}
+.main{flex:1;overflow-y:auto;}
+.page{display:none;padding:34px 42px;max-width:920px;}
+.page.active{display:block;}
+.hero{background:linear-gradient(135deg,var(--ink) 0%,#1a2a4a 100%);color:#fff;padding:40px;border-radius:16px;margin-bottom:24px;position:relative;overflow:hidden;}
+.hero::before{content:'96';position:absolute;right:28px;top:12px;font-size:100px;opacity:0.05;line-height:1;}
+.he{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#e8a87c;margin-bottom:8px;}
+.ht{font-family:var(--serif);font-size:34px;font-weight:600;line-height:1.2;margin-bottom:8px;}
+.hs{font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;max-width:500px;}
+.hst{display:flex;gap:28px;margin-top:22px;flex-wrap:wrap;}
+.hsn{font-family:var(--serif);font-size:26px;font-weight:600;color:#e8a87c;}.hsl{font-size:11px;color:rgba(255,255,255,0.45);margin-top:1px;}
+.sc{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;margin-bottom:22px;}
+.scard{background:var(--paper);border:1px solid var(--paper3);border-radius:11px;padding:15px 17px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.scard:hover{border-color:var(--accent2);box-shadow:0 3px 12px rgba(184,70,15,0.1);transform:translateY(-1px);}
+.scard::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--ca,var(--accent));}
+.ci{font-size:18px;margin-bottom:5px;}.ct{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:3px;}.cm{font-size:11px;color:var(--ink4);}
+.tag{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;margin-top:5px;font-weight:500;}
+.th{background:#fde8e0;color:#b8460f;}.tm{background:#fdf5e0;color:#9a6c10;}.tl{background:#e8f0fb;color:#1a5fa8;}
+.ph{margin-bottom:24px;border-bottom:2px solid var(--paper3);padding-bottom:18px;}
+.pe{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.pt{font-family:var(--serif);font-size:30px;font-weight:600;color:var(--ink);line-height:1.2;}
+.ps{font-size:13.5px;color:var(--ink3);margin-top:6px;line-height:1.6;}
+.pm{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;}
+.mp{font-size:11px;padding:3px 10px;background:var(--paper2);border:1px solid var(--paper3);border-radius:20px;color:var(--ink3);}
+.cn{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px;}
+.cb{padding:5px 12px;border-radius:6px;border:1px solid var(--paper3);background:var(--paper);color:var(--ink3);font-size:12px;cursor:pointer;transition:all .15s;font-family:var(--sans);}
+.cb:hover{border-color:var(--accent2);color:var(--accent);}.cb.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.cc{display:none;}.cc.active{display:block;}
+h2.ph2{font-family:var(--serif);font-size:21px;font-weight:600;color:var(--ink);margin:24px 0 5px;padding:10px 15px;background:linear-gradient(90deg,var(--accent-bg),transparent);border-left:4px solid var(--accent);border-radius:0 8px 8px 0;}
+h2.ph2.bl{background:linear-gradient(90deg,var(--blue-bg),transparent);border-left-color:var(--blue);}
+h2.ph2.gr{background:linear-gradient(90deg,var(--green-bg),transparent);border-left-color:var(--green);}
+h2.ph2.gd{background:linear-gradient(90deg,var(--gold-bg),transparent);border-left-color:var(--gold);}
+h3.sh{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);margin:20px 0 9px;padding-bottom:4px;border-bottom:1px solid var(--paper3);}
+p.pr{font-family:var(--serif);font-size:16px;line-height:1.85;color:var(--ink2);margin-bottom:13px;}
+.ls{background:var(--paper);border:1px solid var(--paper3);border-radius:10px;margin-bottom:9px;overflow:hidden;}
+.lsh{padding:11px 17px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none;transition:background .15s;}
+.lsh:hover{background:var(--paper2);}
+.sn{font-family:var(--mono);font-size:10.5px;background:var(--accent-bg);color:var(--accent);padding:2px 7px;border-radius:4px;font-weight:600;flex-shrink:0;border:1px solid rgba(184,70,15,0.2);}
+.sn.b{background:var(--blue-bg);color:var(--blue);border-color:rgba(26,95,168,0.2);}
+.sn.g{background:var(--green-bg);color:var(--green);border-color:rgba(42,122,74,0.2);}
+.sn.gd{background:var(--gold-bg);color:var(--gold);border-color:rgba(200,147,42,0.2);}
+.sn.p{background:var(--purple-bg);color:var(--purple);border-color:rgba(106,42,138,0.2);}
+.stx{font-size:13.5px;font-weight:600;color:var(--ink);flex:1;}
+.sa{color:var(--ink4);font-size:11px;transition:transform .2s;}.ls.open .sa{transform:rotate(90deg);}
+.lsb{display:none;padding:2px 17px 17px;}.ls.open .lsb{display:block;}
+.st{font-family:var(--serif);font-size:16px;line-height:1.85;color:var(--ink2);margin-bottom:10px;}
+.nt{background:var(--gold-bg);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#5a4010;margin-bottom:9px;line-height:1.6;}
+.nt strong{color:var(--gold);}
+.ex{background:var(--blue-bg);border-left:3px solid var(--blue);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#0d2d54;margin-bottom:9px;line-height:1.6;}
+.ex strong{color:var(--blue);}
+.cs{background:var(--purple-bg);border-left:3px solid var(--purple);border-radius:0 6px 6px 0;padding:10px 13px;font-size:13px;color:#3a1050;margin-bottom:9px;line-height:1.6;}
+.cs strong{color:var(--purple);}
+.em{background:var(--accent-bg);border:1px dashed rgba(184,70,15,0.3);border-radius:6px;padding:9px 13px;font-size:12.5px;color:var(--accent);display:flex;gap:7px;align-items:flex-start;margin-bottom:9px;}
+ul.el{list-style:none;margin:8px 0;}
+ul.el li{display:flex;gap:8px;padding:7px 0;border-bottom:1px solid var(--paper2);font-family:var(--serif);font-size:15.5px;color:var(--ink2);line-height:1.55;}
+ul.el li:last-child{border-bottom:none;}
+.en{font-family:var(--mono);font-size:10px;color:var(--accent);background:var(--accent-bg);padding:2px 5px;border-radius:4px;flex-shrink:0;height:17px;margin-top:3px;}
+.en.b{color:var(--blue);background:var(--blue-bg);}.en.g{color:var(--green);background:var(--green-bg);}
+table.ct{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px;border-radius:8px;overflow:hidden;}
+table.ct th{background:var(--ink);color:#fff;padding:8px 12px;text-align:left;font-size:11px;font-weight:500;letter-spacing:0.04em;}
+table.ct td{padding:8px 12px;border-bottom:1px solid var(--paper3);color:var(--ink2);font-family:var(--serif);font-size:14.5px;vertical-align:top;}
+table.ct tr:nth-child(even) td{background:var(--paper2);}
+.tb{background:var(--green-bg);border:1px solid rgba(42,122,74,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#1a4a2c;display:flex;gap:9px;line-height:1.6;}
+.wb{background:var(--accent-bg);border:1px solid rgba(184,70,15,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#6a2008;display:flex;gap:9px;line-height:1.6;}
+.ib{background:var(--blue-bg);border:1px solid rgba(26,95,168,0.2);border-radius:8px;padding:11px 15px;margin:12px 0;font-size:13px;color:#0d2d54;display:flex;gap:9px;line-height:1.6;}
+.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px;}
+.sk{background:var(--paper);border:1px solid var(--paper3);border-radius:8px;padding:11px;text-align:center;}
+.skt{font-size:21px;font-weight:600;font-family:var(--serif);}.skl{font-size:10px;color:var(--ink4);margin-top:2px;}
+.qc{max-width:680px;}
+.qq{background:var(--paper);border:1px solid var(--paper3);border-radius:12px;padding:20px;margin-bottom:12px;}
+.qqn{font-size:10.5px;color:var(--ink4);margin-bottom:5px;font-family:var(--mono);}
+.qqs{display:inline-block;font-size:10px;padding:2px 7px;border-radius:20px;background:var(--accent-bg);color:var(--accent);margin-bottom:7px;font-weight:500;}
+.qqt{font-family:var(--serif);font-size:17px;line-height:1.65;color:var(--ink);margin-bottom:15px;}
+.qo{display:flex;flex-direction:column;gap:6px;}
+.qopt{padding:9px 14px;border:1px solid var(--paper3);border-radius:7px;cursor:pointer;font-size:13px;color:var(--ink2);transition:all .15s;display:flex;gap:8px;align-items:flex-start;}
+.qopt:hover{border-color:var(--accent2);background:var(--accent-bg);}
+.qopt.correct{background:var(--green-bg);border-color:var(--green);color:var(--green);}
+.qopt.wrong{background:#fde8e0;border-color:#d44;color:#a22;}
+.qol{font-family:var(--mono);font-size:10px;font-weight:600;width:17px;flex-shrink:0;margin-top:2px;}
+.qexp{background:var(--gold-bg);border:1px solid rgba(200,147,42,0.25);border-radius:7px;padding:11px 14px;margin-top:9px;display:none;font-size:13px;color:#5a4010;line-height:1.65;}
+.qexp.show{display:block;}
+.pb{background:var(--paper3);border-radius:4px;height:5px;margin-top:7px;}
+.pbf{height:5px;border-radius:4px;background:var(--accent);transition:width .4s;}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;border-radius:7px;font-size:13px;font-family:var(--sans);font-weight:500;cursor:pointer;transition:all .15s;border:none;}
+.bp{background:var(--accent);color:#fff;}.bp:hover{background:var(--accent2);}
+.bo{background:transparent;border:1px solid var(--paper3);color:var(--ink2);}.bo:hover{border-color:var(--accent2);color:var(--accent);}
+.qscore{text-align:center;padding:30px;background:var(--paper);border-radius:12px;border:1px solid var(--paper3);}
+.qsn{font-family:var(--serif);font-size:52px;font-weight:600;color:var(--accent);}
+@media(max-width:720px){
+  .sidebar{position:fixed;top:52px;left:0;height:calc(100vh - 52px);z-index:90;transform:translateX(-100%);}
+  .sidebar.open{transform:translateX(0);}
+  .menu-btn{display:block;}
+  .page{padding:16px 14px;}
+  .hero{padding:20px 18px;}.ht{font-size:24px;}
+  .sr{grid-template-columns:1fr 1fr;}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:89;}
+  .overlay.show{display:block;}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div class="topbar-brand">⚖ BJS Law <span>Complete Study</span></div>
+  <div class="topbar-meta">LLB Hons · UITS · BJS + Bar Council + Govt Jobs</div>
+</div>
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+<div class="layout">
+<nav class="sidebar" id="sidebar">
+  <div class="ss"><div class="ssl">Study Hub</div>
+    <div class="ni active" onclick="showPage('home')"><span class="ni-icon">🏠</span> Dashboard</div>
+    <div class="ni" onclick="showPage('quiz')"><span class="ni-icon">📝</span> MCQ Quiz <span class="nb">50 Qs</span></div>
+  </div>
+  <div class="ss"><div class="ssl">Core Criminal Law</div>
+    <div class="ni" onclick="showPage('penal')"><span class="ni-icon">⚖️</span> Penal Code 1860 <span class="nb">High</span></div>
+    <div class="ni" onclick="showPage('crpc')"><span class="ni-icon">🔍</span> CrPC 1898 <span class="nb">High</span></div>
+    <div class="ni" onclick="showPage('evidence')"><span class="ni-icon">👁</span> Evidence Act 1872 <span class="nb">High</span></div>
+  </div>
+  <div class="ss"><div class="ssl">Civil Law</div>
+    <div class="ni" onclick="showPage('cpc')"><span class="ni-icon">📜</span> CPC 1908 <span class="nb">High</span></div>
+    <div class="ni" onclick="showPage('contract')"><span class="ni-icon">📋</span> Contract Act 1872</div>
+    <div class="ni" onclick="showPage('tpa')"><span class="ni-icon">🏠</span> Transfer of Property</div>
+    <div class="ni" onclick="showPage('specific')"><span class="ni-icon">✔️</span> Specific Relief Act</div>
+    <div class="ni" onclick="showPage('limitation')"><span class="ni-icon">⏱</span> Limitation Act</div>
+  </div>
+  <div class="ss"><div class="ssl">Constitutional</div>
+    <div class="ni" onclick="showPage('constitution')"><span class="ni-icon">🇧🇩</span> Constitution of BD <span class="nb">High</span></div>
+    <div class="ni" onclick="showPage('bcs')"><span class="ni-icon">🏛</span> BCS Law Cadre</div>
+  </div>
+  <div class="ss"><div class="ssl">Personal Law & Bar</div>
+    <div class="ni" onclick="showPage('muslim')"><span class="ni-icon">🌙</span> Muslim Personal Law</div>
+    <div class="ni" onclick="showPage('barcouncil')"><span class="ni-icon">🎓</span> Bar Council Order</div>
+  </div>
+</nav>
+<main class="main">
+<div class="page active" id="home">
+<div class="hero">
+  <div class="he">BJS · Bar Council · Government Jobs · Complete Reference</div>
+  <div class="ht">Your Complete Bangladesh Law Study Book</div>
+  <div class="hs">Every core Act fully explained — bare text, definitions, case principles, illustrations, exam tips and 50 MCQ questions. Replaces buying 12 different textbooks.</div>
+  <div class="hst">
+    <div><div class="hsn">12</div><div class="hsl">Acts covered</div></div>
+    <div><div class="hsn">500+</div><div class="hsl">Sections explained</div></div>
+    <div><div class="hsn">50</div><div class="hsl">MCQ questions</div></div>
+    <div><div class="hsn">100+</div><div class="hsl">Exam tips</div></div>
+  </div>
+</div>
+<div class="sr">
+  <div class="sk"><div class="skt" style="color:var(--green)">5✓</div><div class="skl">Semesters done</div></div>
+  <div class="sk"><div class="skt" style="color:var(--accent)">3</div><div class="skl">Semesters left</div></div>
+  <div class="sk"><div class="skt" style="color:var(--blue)">~18mo</div><div class="skl">Time to BJS</div></div>
+</div>
+<div style="font-size:14px;font-weight:600;color:var(--ink);margin-bottom:11px;">Select a subject to start reading</div>
+<div class="sc">
+  <div class="scard" onclick="showPage('penal')" style="--ca:#b8460f"><div class="ci">⚖️</div><div class="ct">Penal Code 1860</div><div class="cm">511 sections · All crimes &amp; punishments</div><div class="tag th">🔴 Highest priority</div></div>
+  <div class="scard" onclick="showPage('crpc')" style="--ca:#c8932a"><div class="ci">🔍</div><div class="ct">CrPC 1898</div><div class="cm">FIR, arrest, bail, trial, appeals</div><div class="tag th">🔴 Highest priority</div></div>
+  <div class="scard" onclick="showPage('evidence')" style="--ca:#2a7a4a"><div class="ci">👁</div><div class="ct">Evidence Act 1872</div><div class="cm">Relevancy, confessions, burden of proof</div><div class="tag th">🔴 Highest priority</div></div>
+  <div class="scard" onclick="showPage('cpc')" style="--ca:#1a5fa8"><div class="ci">📜</div><div class="ct">CPC 1908</div><div class="cm">158 sections + 51 Orders · Civil procedure</div><div class="tag th">🔴 Highest priority</div></div>
+  <div class="scard" onclick="showPage('constitution')" style="--ca:#b8460f"><div class="ci">🇧🇩</div><div class="ct">Constitution of Bangladesh</div><div class="cm">153 articles · Rights, Parliament, Judiciary</div><div class="tag th">🔴 Highest priority</div></div>
+  <div class="scard" onclick="showPage('contract')" style="--ca:#6a2a8a"><div class="ci">📋</div><div class="ct">Contract Act 1872</div><div class="cm">Formation, void/voidable, breach, remedies</div><div class="tag tm">🟡 High priority</div></div>
+  <div class="scard" onclick="showPage('tpa')" style="--ca:#2a7a4a"><div class="ci">🏠</div><div class="ct">Transfer of Property Act</div><div class="cm">Sale, mortgage, lease, exchange, gift</div><div class="tag tm">🟡 High priority</div></div>
+  <div class="scard" onclick="showPage('specific')" style="--ca:#1a5fa8"><div class="ci">✔️</div><div class="ct">Specific Relief Act</div><div class="cm">Specific performance, injunctions</div><div class="tag tm">🟡 Priority</div></div>
+  <div class="scard" onclick="showPage('limitation')" style="--ca:#c8932a"><div class="ci">⏱</div><div class="ct">Limitation Act 1908</div><div class="cm">Time periods — suits, appeals, applications</div><div class="tag tm">🟡 MCQ Favourite</div></div>
+  <div class="scard" onclick="showPage('muslim')" style="--ca:#1a5fa8"><div class="ci">🌙</div><div class="ct">Muslim Personal Law</div><div class="cm">Marriage, divorce (MFLO 1961), Faraid</div><div class="tag tl">🔵 Important</div></div>
+  <div class="scard" onclick="showPage('barcouncil')" style="--ca:#2a7a4a"><div class="ci">🎓</div><div class="ct">Bar Council Order 1972</div><div class="cm">Enrollment, professional ethics, conduct</div><div class="tag tl">🔵 Bar exam</div></div>
+  <div class="scard" onclick="showPage('quiz')" style="--ca:#b8460f"><div class="ci">📝</div><div class="ct">MCQ Practice — 50 Questions</div><div class="cm">All Acts with explanations</div><div class="tag th">⭐ Do daily</div></div>
+</div>
+<div class="tb">💡 <span><strong>How to study:</strong> Read one subject daily. Expand every section — all the text is there. Make short notes of section numbers. Do 10 MCQs after each subject. Revise each Act once a month. This single file replaces buying 12 books.</span></div>
 </div>
 
-<script>
-const questions = [
-  {
-    id: 1,
-    category: "CrPC",
-    question: "A confession made to a police officer under the Code of Criminal Procedure is:",
-    options: ["Fully admissible", "Admissible with Magistrate permission", "Strictly inadmissible", "Admissible if corroborated"],
-    answer: "Strictly inadmissible",
-    explanation: "Section 25 of the Evidence Act explicitly bars confessions made to police officers."
-  },
-  
-  // =========================================================
-  // BATCH: 30 CONSTITUTIONAL LAW MCQS FOR BANGLADESH
-  // =========================================================
-  {
-    id: 2,
-    category: "Constitution",
-    question: "Which Article of the Constitution establishes that the Constitution is the supreme law of the Republic?",
-    options: ["Article 7", "Article 1", "Article 26", "Article 44"],
-    answer: "Article 7",
-    explanation: "Article 7 declares that all powers in the Republic belong to the people, and the Constitution is the supreme law of the Republic."
-  },
+<!-- ═══════════════════════════════════════════════════ CrPC -->
+<div class="page" id="crpc">
+<div class="ph"><div class="pe">Bangladesh · Criminal Procedure</div>
+<div class="pt">Code of Criminal Procedure, 1898 (CrPC)</div>
+<div class="ps">Governs investigation, trial, and sentencing of criminal offences. 565 sections. Works alongside the Penal Code — the Penal Code defines crimes, CrPC defines how they are tried.</div>
+<div class="pm"><span class="mp">565 Sections</span><span class="mp">🔴 BJS Highest Priority</span><span class="mp">Works with Penal Code</span></div></div>
+<div class="cn">
+<button class="cb active" onclick="showChapter('crpc','courts')">Courts & Classes</button>
+<button class="cb" onclick="showChapter('crpc','fir')">FIR & Investigation</button>
+<button class="cb" onclick="showChapter('crpc','arrest')">Arrest</button>
+<button class="cb" onclick="showChapter('crpc','bail')">Bail</button>
+<button class="cb" onclick="showChapter('crpc','trial')">Trial Types</button>
+<button class="cb" onclick="showChapter('crpc','judgment')">Judgment & Sentence</button>
+<button class="cb" onclick="showChapter('crpc','appeals')">Appeals & Revision</button>
+<button class="cb" onclick="showChapter('crpc','quick')">Quick Reference</button>
+</div>
 
-  // =========================================================
-  // BATCH: 15 SPECIFIC RELIEF ACT 1877 MCQS
-  // =========================================================
-  {
-    id: 3,
-    category: "Specific Relief Act",
-    question: "Under the Specific Relief Act 1877, within what timeline must a dynamic possession-based summary suit under Section 9 be filed?",
-    options: ["3 months from dispossession", "6 months from dispossession", "1 year from dispossession", "3 years from dispossession"],
-    answer: "6 months from dispossession",
-    explanation: "Section 9 of the Specific Relief Act 1877 explicitly mandates a strict summary timeline of 6 months from the date of dispossession."
-  },
-  {
-    id: 4,
-    category: "Specific Relief Act",
-    question: "Which of the following statements regarding a summary suit instituted under Section 9 of the Specific Relief Act 1877 is correct?",
-    options: ["An appeal lies from the decree", "A review lies from the decree", "No appeal or review lies from any order or decree", "Both appeal and review are maintainable"],
-    answer: "No appeal or review lies from any order or decree",
-    explanation: "Section 9 of the Specific Relief Act 1877 explicitly bars both appeals and reviews against any order or decree passed under this section, though revision is allowed."
-  },
-  {
-    id: 5,
-    category: "Specific Relief Act",
-    question: "Can a plaintiff file a summary suit for recovery of dynamic possession under Section 9 of the Specific Relief Act 1877 against the Government?",
-    options: ["Yes, with prior 2-month notice", "Yes, without any notice", "No, such a suit cannot be brought against the Government", "Yes, with the permission of the High Court Division"],
-    answer: "No, such a suit cannot be brought against the Government",
-    explanation: "Section 9 of the Specific Relief Act 1877 clearly states that no suit under this section shall be brought against the Government."
-  },
-  {
-    id: 6,
-    category: "Specific Relief Act",
-    question: "A person dispossessed of immovable property without consent wants to claim possession based entirely on regular legal ownership or superior title. Which section applies?",
-    options: ["Section 7", "Section 8", "Section 9", "Section 10"],
-    answer: "Section 8",
-    explanation: "Section 8 of the Specific Relief Act 1877 deals with the recovery of specific immovable property based on regular legal title."
-  },
-  {
-    id: 7,
-    category: "Specific Relief Act",
-    question: "Under Section 12 of the Specific Relief Act 1877, specific performance of any contract may be determined by the court's discretion when:",
-    options: ["The act agreed to be done is in the performance of a trust", "Monetary compensation is an adequate remedy", "The contract runs into minute details", "The contract is highly determinable by nature"],
-    answer: "The act agreed to be done is in the performance of a trust",
-    explanation: "Section 12(a) of the Specific Relief Act 1877 explicitly provides that specific performance may be enforced when the act agreed to be done is in the performance, wholly or partly, of a trust."
-  },
-  {
-    id: 8,
-    category: "Specific Relief Act",
-    question: "According to Section 21 of the Specific Relief Act 1877, which of the following contracts CANNOT be specifically enforced?",
-    options: ["A contract where a continuous duty extends over more than 3 years", "A contract to marry or dependent on personal qualifications", "A contract where monetary compensation is not an adequate relief option", "Both A and B"],
-    answer: "Both A and B",
-    options: ["A contract where a continuous duty extends over more than 3 years", "A contract to marry or dependent on personal qualifications", "A contract where monetary compensation is not an adequate relief option", "Both A and B"],
-    answer: "Both A and B",
-    explanation: "Section 21 of the Specific Relief Act 1877 lists contracts that cannot be specifically enforced, including those running into minute details, personal qualifications (like marriage), or continuous duties exceeding three years."
-  },
-  {
-    id: 9,
-    category: "Specific Relief Act",
-    question: "Under Section 21A of the Specific Relief Act 1877, a contract for the sale of immovable property cannot be specifically enforced unless it is:",
-    options: ["In writing and registered", "Oral and witnessed", "Written but unregistered", "Certified by a notary public only"],
-    answer: "In writing and registered",
-    explanation: "Section 21A mandates that the court shall not enforce specific performance of a contract for sale of immovable property unless it is in writing and registered."
-  },
-  {
-    id: 10,
-    category: "Specific Relief Act",
-    question: "Which section of the Specific Relief Act 1877 permits an individual to sue for the Rescission of a dynamic contract?",
-    options: ["Section 31", "Section 35", "Section 39", "Section 42"],
-    answer: "Section 35",
-    explanation: "Section 35 of the Specific Relief Act 1877 sets out the provisions governing when a contract may be rescinded by a person interested therein."
-  },
-  {
-    id: 11,
-    category: "Specific Relief Act",
-    question: "A plaintiff seeks to destroy a physical legal document or written instrument because they apprehend it will cause serious injury. Which section governs this Cancellation of Instruments?",
-    options: ["Section 35", "Section 38", "Section 39", "Section 44"],
-    answer: "Section 39",
-    explanation: "Section 39 of the Specific Relief Act 1877 regulates the cancellation of void or voidable written instruments by court decree."
-  },
-  {
-    id: 12,
-    category: "Specific Relief Act",
-    question: "Any person entitled to any legal character or to any right as to any property may institute a suit for a declaration of status under which section?",
-    options: ["Section 9", "Section 39", "Section 42", "Section 54"],
-    answer: "Section 42",
-    explanation: "Section 42 of the Specific Relief Act 1877 controls declaratory suits where a plaintiff seeks a court judgment regarding their legal character or right to property."
-  },
-  {
-    id: 13,
-    category: "Specific Relief Act",
-    question: "What is the mandatory condition under Section 42 of the Specific Relief Act 1877 that prevents a court from granting a pure declaration?",
-    options: ["Where the plaintiff is able to seek further relief than a mere declaration but omits to do so", "Where the defendant is the Government", "Where the valuation is under 50,000 Taka", "Where the contract is oral"],
-    answer: "Where the plaintiff is able to seek further relief than a mere declaration but omits to do so",
-    explanation: "The proviso to Section 42 clearly states that no court shall make a declaration where the plaintiff, being able to seek further consequential relief, omits to do so."
-  },
-  {
-    id: 14,
-    category: "Specific Relief Act",
-    question: "According to the Specific Relief Act 1877, a Temporary Injunction is explicitly regulated by which legal architecture?",
-    options: ["Section 53 of the Specific Relief Act exclusively", "The Code of Civil Procedure 1908", "The Limitation Act 1908", "Section 55 of the Specific Relief Act exclusively"],
-    answer: "The Code of Civil Procedure 1908",
-    explanation: "Section 53 of the Specific Relief Act 1877 establishes that temporary injunctions are regular interlocutory reliefs governed by the Code of Civil Procedure (Order 39)."
-  },
-  {
-    id: 15,
-    category: "Specific Relief Act",
-    question: "A Perpetual Injunction can only be granted under Section 54 of the Specific Relief Act 1877 through:",
-    options: ["An ex-parte dynamic order", "An affidavit at the initial filing stage", "A final decree made at the hearing upon the merits of the suit", "An interlocutory application filed during the trial"],
-    answer: "A final decree made at the hearing upon the merits of the suit",
-    explanation: "Section 54 states that a perpetual injunction is granted by a final decree made at the hearing upon the merits of the suit, permanently restraining the defendant."
-  },
-  {
-    id: 16,
-    category: "Specific Relief Act",
-    question: "To prevent the breach of an obligation, it is necessary to compel the performance of certain acts which the court is capable of enforcing. The court may grant a:",
-    options: ["Temporary Injunction", "Perpetual Injunction", "Mandatory Injunction", "Prohibitory Injunction"],
-    answer: "Mandatory Injunction",
-    explanation: "Section 55 of the Specific Relief Act 1877 defines a Mandatory Injunction as one used to prevent the breach of an obligation by compelling performance of requisite acts."
-  },
-  {
-    id: 17,
-    category: "Specific Relief Act",
-    question: "Under Section 56 of the Specific Relief Act 1877, an injunction CANNOT be granted to:",
-    options: ["Stay judicial proceedings pending at the institution of the suit, unless to prevent multiplicity", "Restrain any person from applying to any legislative body", "Interfere with the public duties of any department of the Government", "All of the above"],
-    answer: "All of the above",
-    explanation: "Section 56 lists explicit statutory bars where an injunction cannot be granted, including staying judicial proceedings, restraining legislative applications, or interfering with sovereign government departments."
-  },
+<div class="cc active" id="crpc-courts">
+<h2 class="ph2">Courts and Their Classification</h2>
+<p class="pr">The CrPC establishes a hierarchy of criminal courts. Each court has jurisdiction over specific offences based on the maximum punishment that can be awarded.</p>
+<table class="ct">
+<tr><th>Court</th><th>Established by</th><th>Maximum Sentence it can impose</th></tr>
+<tr><td>Chief Metropolitan Magistrate / Chief Judicial Magistrate</td><td>§§ 6, 12</td><td>5 years imprisonment + fine</td></tr>
+<tr><td>Metropolitan Magistrate / Judicial Magistrate (1st Class)</td><td>§ 12</td><td>5 years imprisonment + fine</td></tr>
+<tr><td>Judicial Magistrate (2nd Class)</td><td>§ 12</td><td>3 years imprisonment + fine up to Tk.3000</td></tr>
+<tr><td>Judicial Magistrate (3rd Class)</td><td>§ 12</td><td>2 years imprisonment + fine up to Tk.1000</td></tr>
+<tr><td>Sessions Court</td><td>§ 6</td><td>Any sentence authorised by law (including death — but needs HC confirmation)</td></tr>
+<tr><td>Additional Sessions Judge</td><td>§ 9</td><td>Same as Sessions Judge</td></tr>
+<tr><td>High Court Division</td><td>Constitution Art.101</td><td>Any sentence; appellate and original jurisdiction</td></tr>
+</table>
+<div class="nt"><strong>Death sentence confirmation:</strong> Under §374 CrPC, a Sessions Court that passes a death sentence must submit the case to the High Court Division for confirmation. The death sentence does not take effect until the High Court confirms it.</div>
+<div class="em"><span>📌</span> Cognizable vs Non-Cognizable: The most fundamental classification of offences in CrPC. Schedule II classifies every offence. Cognizable = police can arrest without warrant, investigate without Magistrate's order. Non-cognizable = police need Magistrate's permission for investigation and arrest.</div>
+<table class="ct">
+<tr><th>Feature</th><th>Cognizable Offence</th><th>Non-Cognizable Offence</th></tr>
+<tr><td>Arrest by police</td><td>Without warrant (§54)</td><td>Only with warrant</td></tr>
+<tr><td>Investigation</td><td>Without Magistrate's order (§156)</td><td>Only with Magistrate's order (§155)</td></tr>
+<tr><td>Examples</td><td>Murder, rape, robbery, dacoity, kidnapping</td><td>Assault, cheating (some), defamation, public nuisance</td></tr>
+<tr><td>Bailable?</td><td>Generally non-bailable</td><td>Generally bailable</td></tr>
+</table>
+</div>
 
-  // =========================================================
-  // BATCH: 15 CONTRACT ACT 1872 MCQS
-  // =========================================================
-  {
-    id: 18,
-    category: "Contract Act",
-    question: "According to Section 2(g) of the Contract Act 1872, an agreement not enforceable by law is explicitly defined as:",
-    options: ["Voidable Contract", "Void Agreement", "Illegal Agreement", "Contingent Contract"],
-    answer: "Void Agreement",
-    explanation: "Section 2(g) of the Contract Act 1872 states that an agreement not enforceable by law is said to be void (*void ab initio*)."
-  },
-  {
-    id: 19,
-    category: "Contract Act",
-    question: "An agreement which is enforceable by law at the option of one or more of the parties thereto, but not at the option of the other or others, is a:",
-    options: ["Void Agreement", "Voidable Contract", "Valid Contract", "Quasi-Contract"],
-    answer: "Voidable Contract",
-    explanation: "Section 2(i) of the Contract Act 1872 defines a voidable contract based on its operational dependency on the option of the aggrieved party."
-  },
-  {
-    id: 20,
-    category: "Contract Act",
-    question: "Under Section 10 of the Contract Act 1872, all agreements are valid contracts if they are built upon:",
-    options: ["Free consent of parties competent to contract", "Lawful consideration and a lawful object", "Not hereby expressly declared to be void", "All of the above"],
-    answer: "All of the above",
-    explanation: "Section 10 sets out the structural command for dynamic validity: competence, free consent, lawful consideration, lawful object, and absence of express statutory bars."
-  },
-  {
-    id: 21,
-    category: "Contract Act",
-    question: "According to Section 11 of the Contract Act 1872, every person is competent to contract who is of the age of majority, and who is:",
-    options: ["Of sound mind, and not disqualified from contracting by any law", "Under legal guardianship", "An undischarged insolvent", "A minor with parent consent"],
-    answer: "Of sound mind, and not disqualified from contracting by any law",
-    explanation: "Section 11 explicitly mandates that competence requires the age of majority, soundness of mind, and no statutory legal disqualifications."
-  },
-  {
-    id: 22,
-    category: "Contract Act",
-    question: "Consent is defined as free under Section 14 of the Contract Act 1872 when it is NOT caused by which of the following combinations?",
-    options: ["Coercion (Sec. 15) or Undue Influence (Sec. 16)", "Fraud (Sec. 17) or Misrepresentation (Sec. 18)", "Mistake (Sec. 20, 21 or 22)", "All of the above"],
-    answer: "All of the above",
-    explanation: "Section 14 states consent is free when it is completely untainted by coercion, undue influence, fraud, misrepresentation, or mistake."
-  },
-  {
-    id: 23,
-    category: "Contract Act",
-    question: "When consent to an agreement is caused by Coercion, Fraud, or Misrepresentation, the contract status under Section 19 is:",
-    options: ["Void *ab initio*", "Voidable at the option of the party whose consent was so caused", "Fully valid and unresolvable", "Illegal and penal in nature"],
-    answer: "Voidable at the option of the party whose consent was so caused",
-    explanation: "Section 19 provides that an agreement where consent is coerced or fraudulently induced is a contract voidable at the option of the aggrieved party."
-  },
-  {
-    id: 24,
-    category: "Contract Act",
-    question: "Under Section 20 of the Contract Act 1872, where both the parties to an agreement are under a mistake as to a matter of fact essential to the agreement, the agreement is:",
-    options: ["Valid", "Voidable", "Void", "Unenforceable"],
-    answer: "Void",
-    explanation: "Section 20 rules that a mutual or bilateral mistake of an essential fact completely neutralizes the agreement, rendering it void."
-  },
-  {
-    id: 25,
-    category: "Contract Act",
-    question: "According to Section 23 of the Contract Act 1872, the consideration or object of an agreement is lawful unless:",
-    options: ["It is forbidden by law or is fraudulent", "It involves or implies injury to the person or property of another", "The Court regards it as immoral, or opposed to public policy", "All of the above"],
-    answer: "All of the above",
-    explanation: "Section 23 establishes that any consideration or object that is illegal, fraudulent, injurious, or opposed to public policy is unlawful and renders the agreement void."
-  },
-  {
-    id: 26,
-    category: "Contract Act",
-    question: "Section 25 of the Contract Act 1872 establishes that an agreement made without consideration is void, UNLESS it is:",
-    options: ["Expressed in writing, registered, and made on account of natural love and affection", "A promise to compensate someone who voluntarily did something for the promisor", "A written promise to pay a debt barred by the law of limitation", "Any of the above"],
-    answer: "Any of the above",
-    explanation: "Section 25 outlines the three classic exceptions where an agreement without consideration remains a valid, binding contract."
-  },
-  {
-    id: 27,
-    category: "Contract Act",
-    question: "An agreement by which anyone is restrained from exercising a lawful profession, trade, or business of any kind is under Section 27:",
-    options: ["Void to that extent", "Voidable by the employee", "Fully enforceable everywhere", "Illegal under criminal law"],
-    answer: "Void to that extent",
-    explanation: "Section 27 states that every agreement by which anyone is restrained from exercising a lawful profession, trade, or business is to that extent void."
-  },
-  {
-    id: 28,
-    category: "Contract Act",
-    question: "A contract to do or not to do something, if some event, collateral to such contract, does or does not happen, defines a:",
-    options: ["Quasi-Contract", "Contingent Contract", "Wandering Agreement", "Voidable Promise"],
-    answer: "Contingent Contract",
-    explanation: "Section 31 of the Contract Act 1872 explicitly defines a contingent contract based on conditional performance linked to an uncertain collateral event."
-  },
-  {
-    id: 29,
-    category: "Contract Act",
-    question: "If a person incapable of entering into a contract is supplied by another person with necessaries suited to their condition in life, the supplier under Section 68 is entitled to:",
-    options: ["Arrest the incapable person", "Reimbursement from the property of such incapable person", "No dynamic remedy since the contract is void", "Personal recovery from the guardian exclusively"],
-    answer: "Reimbursement from the property of such incapable person",
-    explanation: "Section 68 (Quasi-Contract) allows reimbursement from the property of the incompetent person for the supply of essential necessaries."
-  },
-  {
-    id: 30,
-    category: "Contract Act",
-    question: "A person who finds goods belonging to another, and takes them into his custody, is subject to the same responsibility as a:",
-    options: ["Pawnee", "Bailee", "Owner", "Agent"],
-    answer: "Bailee",
-    explanation: "Section 71 of the Contract Act 1872 imposes the strict legal duties of a bailee upon any finder of lost goods."
-  },
-  {
-    id: 31,
-    category: "Contract Act",
-    question: "When a contract has been broken, the party who suffers by such breach is entitled to receive compensation for loss under Section 73 which:",
-    options: ["Naturally arose in the usual course of things from such breach", "Includes remote and indirect losses sustained", "Acts as exemplary or punitive damages to teach a lesson", "Is calculated at double the contract price"],
-    answer: "Naturally arose in the usual course of things from such breach",
-    explanation: "Section 73 permits the recovery of damages that naturally arise in the usual course of things or were within human contemplation, excluding remote losses."
-  },
-  {
-    id: 32,
-    category: "Contract Act",
-    question: "Under Section 74 of the Contract Act 1872, if a sum is named in the contract as the amount to be paid in case of breach:",
-    options: ["The court always awards that exact sum as a mandatory penalty", "The plaintiff receives nothing if no actual loss is verified", "The party complaining of the breach is entitled to receive reasonable compensation not exceeding the amount so named", "English common law penalty distinctions apply fully"],
-    answer: "The party complaining of the breach is entitled to receive reasonable compensation not exceeding the amount so named",
-    explanation: "Section 74 eliminates the common law distinction between liquidated damages and penalties; it treats the named sum as an absolute maximum ceiling for reasonable compensation."
-  }
-];
-</script>
+<div class="cc" id="crpc-fir">
+<h2 class="ph2">FIR and Investigation (§§ 154–176)</h2>
+<div class="ls open"><div class="lsh" onclick="toggleSection(this)"><span class="sn">§ 154</span><span class="stx">First Information Report (FIR) — Cognizable offences</span><span class="sa">▶</span></div>
+<div class="lsb"><p class="st">Every information relating to the commission of a cognizable offence, if given orally to an officer in charge of a police station, shall be reduced to writing by him or under his direction, and be read over to the informant; and every such information, whether given in writing or reduced to writing as aforesaid, shall be signed by the person giving it, and the substance thereof shall be entered in a book kept for that purpose by such officer in the form prescribed by the Government, and a copy of the information as so recorded shall be given forthwith, free of cost, to the informant.</p>
+<div class="nt"><strong>Essentials of a valid FIR:</strong> (1) Must relate to a cognizable offence, (2) If oral, must be reduced to writing by the officer, (3) Must be read over to the informant, (4) Signed by the informant, (5) Entered in the station diary, (6) A free copy must be given to the informant immediately.</div>
+<div class="em"><span>📌</span
